@@ -6,3 +6,16 @@ If you want to use a less complicated template, use https://github.com/IMISE/imi
 
 ## Language
 Can be used for both English and German. German is set by default. To switch to English, rename the sections and change the babel language.
+
+## Usage
+To fit the template with your own infos, please change `thesis.tex`. All the included files can be turned on or off as you want it to have.
+
+## Setup
+Setup details such as needed packages are defined at `classicthesis-config.tex`.
+
+## More help/information needed
+For further information please visit https://ctan.org/pkg/classicthesis or for documentation use [this][1] link. 
+
+[1]: https://ftp.agdsn.de/pub/mirrors/latex/dante/macros/latex/contrib/classicthesis/ClassicThesis.pdf
+
+### Have Fun!!!
