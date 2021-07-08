@@ -2,64 +2,104 @@
 \chapter{Einleitung}\label{ch:introduction}
 %************************************************
 Eine Abschlussarbeit ist mit einem Projekt vergleichbar und in der Einleitung wird die Aufgabenstellung in ähnlicher Weise beschrieben wie in dem Strukturplan eines Projektes.
-Daher sollte die Einleitung mit Hilfe der \enquote{5-Stufen-Methode zur systematischen Strukturplanung}\footnote{}1 vorgenommen werden.
+Daher sollte die Einleitung mit Hilfe der \enquote{5-Stufen-Methode zur systematischen Strukturplanung}~\citep{ob}\footnotemark{} vorgenommen werden.
+\footnotetext{Das Buch ist für Studierende der Medizininformatik an der Universität Leipzig im Moodle verfügbar.
+Schauen Sie in den von ihnen belegten Modulen nach.}
 
-\section{Gegenstand und Motivation}
-Dieses Kapitel hilft nicht nur dem Leser, sondern auch dem Autor zu verstehen, in welchen fachlichen Kontext sich die Arbeit einordnet. Hier muss also insgesamt deutlich werden, wozu die in der Arbeit beschriebenen Arbeitsergebnisse letztlich verwendet werden sollen und welchen Nutzen sie möglicherweise bringen können.
-Ohne ausreichende Gegenstands- und Motivationsbeschreibung kann ein Leser nicht verstehen, warum z.B. eine entwickelte Software sinnvoll ist bzw. zur Lösung welches Problems sie verwendet werden soll. Gerade für die Medizinische Informatik als eine problemorientierte Disziplin ergibt sich der Wert einer Lösung, z.B. einer Software, aber vor allem daraus, ob bzw. wie weit sie ein Problem löst.
-Für den Autor bedeutet daher eine unzureichende Gegenstands- und Motivationsbeschreibung die Gefahr, dass er sich die zu lösende Problematik nicht ausreichend klar gemacht hat.
-Bei der Erstellung der Arbeit besteht dann die Gefahr, dass er möglicherweise methodisch aufregende Lösungen entwirft und realisiert, für die aber ein Problem gar nicht besteht oder die für die Lösung der tatsächlichen Probleme nicht geeignet sind. Trotz einer möglicherweise brillanten Lösung wäre dann doch eine schlechte Bewertung der Lösung und damit der Arbeit zu erwarten.
-Aus diesem Grund sollte das Kapitel 1.1 ausführlich sein. Ein Umfang von weniger als drei Seiten wird in der Regel nicht ausreichen.
-
-\subsection{Gegenstand}
+\section{Gegenstand}
+Dieses Kapitel hilft nicht nur dem Leser, sondern auch dem Autor zu verstehen, in welchen fachlichen Kontext sich die Arbeit einordnet.
+Hier muss also insgesamt deutlich werden, wozu die in der Arbeit beschriebenen Arbeitsergebnisse letztlich verwendet werden sollen und welchen Nutzen sie möglicherweise bringen können.
 
 \begin{itemize}
-
 \item Welche Situation liegt vor und was soll getan werden?
 \item Worum geht es eigentlich?
 \item In welcher Welt/Domäne oder welchem Arbeitsbereich/-gebiet bewegen wir uns im Rahmen der Arbeit
-
 \end{itemize}
 
-\subsection{Problematik}
+\section{Problemstellung}
 \begin{itemize}
 \item Warum ist die geschilderte vorliegende Situation problematisch?
 \item Worin bestehen die Probleme?
 \item Für wen ist sie problematisch?
+\item Welche der geschilderten Probleme sollen im Rahmen dieser Abschlussarbeit gelöst werden?
 \end{itemize}
 
-\subsection{Motivation}
+Bitte die Probleme, die in dieser Arbeit gelöst werden sollen, nummerieren und mit wenigen Sätzen zusammenfassend beschreiben:
+
+\begin{itemize}
+\item Problem P1: Problemname 1 mit kurzer Problembeschreibung
+\item Problem P2: Problemname 2 mit kurzer Problembeschreibung
+\end{itemize}
+
+Was aber sind \enquote{Probleme} und wie kann man sie beschreiben?
+Die Probleme stehen im engen Zusammenhang mit den in \cref{sec:zielsetzung} beschriebenen Zielen.
+
+\paragraph{Vermeiden Sie Formulierungen wie \enquote{Es ist nicht bekannt, ob$\ldots$} oder \enquote{Es existiert kein$\ldots$}.}
+Solche Formulierungen kehren in der Regel einfach das bereits angedachte Lösungsmodell um und postulieren das Fehlen der angedachten Lösung einfach als Problem.
+Das ist ähnlich, als wenn es in der Werbung hieße \blockquote{Wenn Sie das Problem haben, dass Ihnen Aspirin fehlt, dann kaufen Sie doch Aspirin}.
+Das Problem wäre dann schon gelöst, wenn Sie Aspirin gekauft haben.
+Sinnvoller ist diese Aussage:
+\blockquote{Wenn Sie das Problem haben, dass Ihnen der Kopf weh tut, dann kaufen Sie doch Aspirin.}
+Es ist also bei der Problembeschreibung erforderlich, sich in die Lage dessen zu versetzen, den man mit der angedachten Lösung \enquote{beglücken} möchte.
+Sein Problem ist zu ermitteln und so zu formulieren, dass er/sie das Problem wiedererkennt und dadurch geneigt ist, sich für die Lösung des Problems zu interessieren.
+Bei der zweiten Problembeschreibung wäre das Problem im Übrigen erst gelöst, wenn die Kopfschmerzen weg sind.
+
+
+Hierzu noch ein Beispiel aus einer wissenschaftlichen Arbeit:
+\blockquote{Problem: Es ist keine ganzheitliche Vorgehensweise bekannt, die die Entwicklung und Verbesserung von Software zur Steigerung der Motivation durch Unterhaltung in der Therapie auf strukturierte Art und Weise unterstützt.}
+Als Ziel wird dort formuliert:
+\blockquote{Erstellung einer ganzheitlichen Vorgehensweise zur Entwicklung von Software zur Steigerung der Motivation durch Unterhaltung in der Therapie.}
+Es ist völlig unklar, wer das Problem hat, dass ihm oder ihr keine Vorgehensweise bekannt ist.
+Außerdem wäre das Problem schon gelöst, wenn irgendwie eine ganzheitliche Vorgehensweise bekannt würde.
+Tatsächlich schließt diese Arbeit auch einfach mit der Präsentation einer einheitlichen Vorgehensweise und das geschilderte Problem ist gelöst ohne noch weiter zu untersuchen, ob die Vorgehensweise irgendeinen Nutzen erbringt.
+Vermutlich liegt das Problem aber etwas tiefer.
+Es scheint doch wohl so zu sein, das bislang völlig unbrauchbare Software entwickelt wurde und man die Hoffnung hat, durch eine ganzheitliche Vorgehensweise bessere Ergebnisse erzielen zu können.
+Das Problem sollte also eher so formuliert werden:
+\blockquote{Problem: Wie aktuelle Publikationen zeigen [12-17], erfüllen die zur Zeit am Markt angebotenen  Softwareprodukte zur Steigerung der Motivation durch Unterhaltung in der Therapie nicht ihren Zweck.
+So wird zum Beispiel der Unterhaltungswert von 73\% der Anwender als gering eingestuft und eine Motivationssteigerung für die Therapie konnte in keiner Studie nachgewiesen werden.}
+Dazu würde folgendes Ziel passen:
+\blockquote{Ziel ist eine ganzheitlichen Vorgehensweise zur Entwicklung von Software zur Steigerung der Motivation durch Unterhaltung in der Therapie, durch deren Anwendung der Unterhaltungswert für die Anwender und eine Motivationssteigerung für die Therapie erreicht werden kann.}
+Das hier geschilderte Problem ist jetzt ein Problem von Patient:innen.
+Bei diesem Problem und diesem Ziel muss die Arbeit daher damit schließen, dass zumindest an einem Beispiel gezeigt wird, dass die neue Vorgehensweise tatsächlich zu gesteigertem Unterhaltungswert und zur Motivationssteigerung bei Patient:innen führt.
+Man könnte aber auch ‚die Latte etwas niedriger hängen‘ und sich zunächst mit folgendem Problem befassen:
+\blockquote{Problem: Bei der Entwicklung von Softwareprodukten zur Steigerung der Motivation durch Unterhaltung in der Therapie sind übersehen viele Entwickler:innen geeignete Möglichkeiten und Spielelemente, die zur Steigerung der Motivation von Patienten eingesetzt werden können oder setzen Spielelemente für die falschen Zwecke oder an der falschen Stelle ein.}
+Dazu würde dann folgendes Ziel passen:
+\blockquote{Ziel ist eine ganzheitlichen Vorgehensweise zur Entwicklung von Software zur Steigerung der Motivation durch Unterhaltung in der Therapie, die die Softwarentwickler:in ausgehend von den zu erreichenden Zielen systematisch bei der Auswahl geeigneter Spiel-elemente zur Steigerung von Motivation unterstützt.}
+In diesem Fall wird ein Problem vom Softwareentwickler:innen beschrieben und das angestrebte Ziel wird auch diese Entwickler:innen unterstützen.
+Hier müsste die Arbeit damit schließen, dass man zeigt, dass es bei dem Entwickeln der Software leichter wird, Elemente so einzusetzen, dass sie dem intendierten Zweck dienen.
+
+\section{Motivation}
 
 \begin{itemize}
 \item Warum lohnt es sich, die genannten Probleme zu lösen?
 \item Wer wird welchen Nutzen von dieser Abschlussarbeit haben?
 \item Warum ist die Arbeit wichtig?
 \item Wer wartet sehnlichst auf die Fertigstellung der Arbeit
-
 \end{itemize}
 
-\section{Problemstellung}
+Ohne ausreichende Gegenstands-, Problem- und Motivationsbeschreibung kann eine Leser:in nicht verstehen, warum z.\,B. eine entwickelte Software sinnvoll ist bzw. zur Lösung welches Problems sie verwendet werden soll.
+Gerade für die Medizinische Informatik als eine problemorientierte Disziplin ergibt sich der Wert einer Lösung, z.\,B. einer Software, aber vor allem daraus, ob bzw. wie weit sie ein Problem löst.
 
-Vermeiden Sie Formulierungen wie \glqq Es ist nicht bekannt, ob...\grqq oder \glqq Es existiert kein...\grqq.
+Für die Autor:in bedeutet daher eine unzureichende Gegenstands-, Problem- und Motivationsbeschreibung die Gefahr, dass sie oder er sich die zu lösende Problematik nicht ausreichend klar gemacht hat.
+Bei der Erstellung der Arbeit besteht dann die Gefahr, dass man möglicherweise methodisch aufregende Lösungen entwirft und realisiert, für die aber ein Problem gar nicht besteht oder die für die Lösung der tatsächlichen Probleme nicht geeignet sind.
+Trotz einer möglicherweise brillanten Lösung wäre dann doch eine schlechte Bewertung der Lösung und damit der Arbeit zu erwarten.
+Außerdem sollte sich -- auch bei einer Abschlussarbeit -- die Arbeit auch lohnen, d.h. es sollte genügend Motivation geben, viel Zeit und Energie zu investieren.
+Aus diesem Grund sollten die Kapitel 1.1 bis 1.3 ausführlich sein.
+Ein Umfang von weniger als drei Seiten wird in der Regel nicht ausreichen.
+Mit einem Augenzwinkern hier noch Motivationen, die wir nicht gerne in einer Abschlussarbeit sehen:\\
+~~\\
 
-Solche Formulierungen kehren in der Regel einfach das bereits angedachte Lösungsmodell um und postulieren das Fehlen der angedachten Lösung einfach als Problem. Das ist ähnlich, wie wenn es  in der Werbung hieße ?Wenn Sie das Problem haben, dass Ihnen Aspirin fehlt, dann kaufen Sie doch Aspirin?. Sinnvoller ist diese Aussage:  ?Wenn Sie das Problem haben, dass Ihnen der Kopf weh tut, dann kaufen Sie doch Aspirin?. Es ist also bei der Problembeschreibung erforderlich, sich in die Lage dessen zu versetzen, den man mit der angedachten Lösung beglücken möchte. Sein Problem ist zu ermitteln und so zu formulieren, er/sie das Problem wiedererkennt und dadurch geneigt ist, sich für die Lösung des Problems zu interessieren.
+\begin{tabulary}{\textwidth}{LL}
+Warum lohnt es sich, die genannten Probleme zu lösen?						&\enquote{Weil ich mein Studium endlich hinter mir haben will}, \enquote{Damit ich eine gute Note habe.}, \enquote{Weil Prof. Winter/mein Betreuer es so will.}\\
+Wer wird welchen Nutzen von dieser Abschlussarbeit haben?					&\enquote{Ich, weil ich dann endlich mit studieren fertig bin / in den Master darf.}\\
+Warum ist die Arbeit wichtig?												&\enquote{Weil mein Betreuer es möchte.}, \enquote{Weil es X noch nicht gibt.}, \enquote{Weil es X nur mit Technik Y gibt, aber nicht mit Z}, \enquote{Weil die Vorarbeiten so schlecht sind}\\
+Wer wartet sehnlichst auf die Fertigstellung der Arbeit?					&\enquote{Ich / Mein Betreuer / Prof. Winter / meine Oma} (außer es ist eine Eigenentwicklung für speziell diese Personen)\\
+\end{tabulary}
+
+\section{Zielsetzung}\label{sec:zielsetzung}
 
 \begin{itemize}
-\item Welche der in der Problematik geschilderten Probleme sollen im Rahmen dieser Abschlussarbeit gelöst werden?
-\end{itemize}
-Bitte jedes Einzelproblem nummerieren und mit 1-2 Sätzen beschreiben:
-
-\begin{itemize}
-
-
-\item Problem P1: Problemname 1 mit kurzer Problembeschreibung
-\item Problem P2: Problemname 2 mit kurzer Problembeschreibung
-\end{itemize}
-
-\section{Zielsetzung}
-
-\begin{itemize}
-\item Welche Ergebnisse werden mit dieser Abschlussarbeit angestrebt und welche der o.g. Probleme sollen damit jeweils gelöst werden?
+\item Welche Ergebnisse werden mit dieser Abschlussarbeit angestrebt und welche der o.\,g. Probleme sollen damit jeweils gelöst werden?
 \end{itemize}
 Bitte jedes Ziel kurz oder ggf. mit Stichworten beschreiben:
 \begin{itemize}
@@ -73,13 +113,13 @@ Bitte jedes Ziel kurz oder ggf. mit Stichworten beschreiben:
 \section{Aufgabenstellung}
 
 \begin{itemize}
-\item Wie sollen die o.g. Ziele erreicht werden?
+\item Wie sollen die o.\,g. Ziele erreicht werden?
 \item Was soll zur Erreichung der Ziele bzw. zur Schaffung der Ergebnisse getan werden?
 \item Welche Fragen müssen zur Erreichung der Ziele bzw. zur Schaffung der Ergebnisse beantwortet  werden?
 \end{itemize}
 
 
-Bitte geben Sie zu jedem der o.g. Ziele mindestens zwei Aufgaben bzw. Fragen an, die bearbeitet bzw. beantwortet werden sollen. Bitte jede Aufgabe bzw. Frage kurz oder ggf. mit Stichworten beschreiben:
+Bitte geben Sie zu jedem der o.\,g. Ziele mindestens zwei Aufgaben bzw. Fragen an, die bearbeitet bzw. beantwortet werden sollen. Bitte jede Aufgabe bzw. Frage kurz oder ggf. mit Stichworten beschreiben:
 
 \begin{itemize}
 \item Aufgaben zu Ziel Z1.1:
