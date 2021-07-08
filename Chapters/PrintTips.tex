@@ -1,0 +1,136 @@
+\chapter{Advanced Print Tips (English)}
+Warning: This are advanced \LaTeX{}-tips. If they are too complicated for you, just ignore them, everything should be set up just fine! Just be sure to remind the print shop that you want \emph{two-sided printing} \enquote{beidseitig drucken} and it may be a few Euros more expensive.
+
+\section{One-sided vs Two-sided}
+Save the environment, use two-sided printing!
+It also saves money and space in our cupboards!
+Two-sided printing also looks more professional in my opinion.
+In this `classicthesis` template, this is already done by including the `twoside` argument to the `sccreprt` document class in thesis.tex which mirrors the margins.
+
+The title page and the first page of each chapter needs to be on the right side by adding empty pages if necessary, which is provided by the `openright` option.
+View the PDF in two-sided mode and check if those pages are all on the right side and have odd page numbers.
+The title page is the first page in the document, so the PDF starts at the right side.
+However this is all already setup, so it should be good to go, just make sure to tell your printing shop that it is two sided because most students print on-sided and they often forget that you want it differently!
+
+If you insist to use one-sided printing, you get the same margin on all pages.
+You can enable it by commenting out the \texttt{twoside} and \texttt{openright} options in \texttt{thesis.tex}:
+
+% Here you can see how to typeset source code. The language setting doesn't work here for unknown reasons, however, so it is commented out.
+%\lstset{language=plain}
+\begin{lstlisting}
+\documentclass[titlepage,numbers=noenddot,%twoside, openright %a percent sign comments something out in LaTeX
+                   headinclude,footinclude,cleardoublepage=empty,abstract=on,
+                   BCOR=5mm,paper=a4,fontsize=11pt
+                  ]{scrreprt}
+\end{lstlisting}
+
+If you perform any changes here, check if the formatting in your document is still correct, as changing margins could move things around or destroy a table layout.
+
+\section{LaTeX Warnings}
+Of course there should never be any errors when compiling a LaTeX document but what about all those hundreds of warnings that you collected and ignored over the months?
+The log can have a thousand lines or more because pdflatex is very verbose but some nasty surprises can be hidden there so I recommend you to go through it at least once, even though you cannot fix all of them.
+You can remove some of the clutter in vim via \verb+:%s/^.*\/usr\/share\:q/texmf-dist\/.*$\n//+ (adapt to your LaTeX installation path).
+
+\subsection{Overful Hboxes}
+Overful hboxes are elements going over your right margin, which should not happen.
+Overful and underful hboxes are included in your log but you can visualize overful hboxes using \verb+\setlength{\overfullrule}{20pt}+ (don't forget to take this out afterwards).
+Sometimes an overful hbox is reported but not actually visible because only the invisible part of an element, such as a table, runs over the margin, in which case you can ignore it.
+
+\section{Color}
+Colored pages are about ten times more expensive than grayscale, so you need to find them, reduce the number of them as much as possible and then tell the printing studio how many there are for calculating the price.
+
+\subsection{Colored Text Elements }
+At first I had a huge number of colored pages because all my links and listings were colored, which looks great on paper but is very costly.
+However you can still keep a screen version with all the nice colors intact.
+Bonus points if you can implement a switch between a print and a screen version.
+I didn't have the time left for that and you probably don't and shouldn't, but if you do, please tell me!
+
+\begin{lstlisting}
+\hypersetup{%
+colorlinks=false, % print version
+%colorlinks=true, % screen version
+[...]
+pdfborder={0 0 0}, % I don't like link borders but if you do those are perfect for that purpose as they are only shown on screen, not in print! Requires colorlinks=false to be shown.
+\end{lstlisting}
+
+\begin{lstlisting}
+\definecolor{listkeyword}{gray}{0.3}
+\lstset{
+%keywordstyle=\color{cyan}, % screen version
+keywordstyle=\color{listkeyword}, % print version
+[...]
+}
+\end{lstlisting}
+  
+\subsection{Colorcheck script}
+Ghostscript can detect all pages that contain color \href{https://tex.stackexchange.com/questions/53493/detecting-all-pages-which-contain-color/61216\#61216}{Source: StackOverflow}.
+The colorcheck script will tell you, how many colored and grayscale pages your document has and show you the pages with color on it and the average values for the CMYK channels in that order.
+The `tail -n +6` is adapted to Ghostscript 9.52 and may break in the future and removes the ghostscript version and license information.
+
+\begin{lstlisting}
+    gs -o - -sDEVICE=inkcov $1 | tail -n +6 | sed ':a;N;$!ba;s/\n / /g' > /tmp/colorlog # each page on one line
+    echo -n "Black and white pages: "
+    grep -e "0.00000  0.00000  0.00000  [01]." /tmp/colorlog | wc -l
+    echo -n "Colored pages: "
+    grep -v -e "0.00000  0.00000  0.00000  [01]." /tmp/colorlog | wc -l
+    grep -v -e "0.00000  0.00000  0.00000  [01]." /tmp/colorlog
+\end{lstlisting}
+
+Example:
+
+\begin{lstlisting}
+\$ colorcheck main.pdf
+Black and white pages: 128
+Colored pages: 7
+Page 1 0.00000  0.00264  0.00264  0.01284 CMYK OK
+Page 21 0.03851  0.03842  0.03844  0.03065 CMYK OK
+Page 22 0.07243  0.06588  0.07243  0.10790 CMYK OK
+Page 66 0.01619  0.01619  0.01399  0.05655 CMYK OK
+Page 81 0.09786  0.11218  0.10922  0.02548 CMYK OK
+Page 82 0.15376  0.15006  0.14548  0.06880 CMYK OK
+Page 84 0.04707  0.04707  0.03834  0.03834 CMYK OK
+\end{lstlisting}
+
+\subsection{CMYK Color Space}
+You only need to know three things about CMYK:
+
+\begin{enumerate}
+\item it stands for Cyan, Magenta, Yellow and Key (black)
+\item black pages need to only use the key channel
+\item not all RGB values can be represented in CMYK, such as a bright red (255,0,0)
+\end{enumerate}
+
+A page that gets reported by colorcheck may contain a PDF picture that looks perfectly grayscale to the human eye but that has its black value mixed from the other colors, not the black channel.
+If it is a picture that you didn't produce yourself from within LaTeX, you can convert it using Ghostscript:
+
+\begin{lstlisting}
+gs \
+ -sOutputFile=output.pdf \
+ -sDEVICE=pdfwrite \
+ -sColorConversionStrategy=Gray \
+ -dProcessColorModel=/DeviceGray \
+ -dCompatibilityLevel=1.4 \
+ -dNOPAUSE \
+ -dBATCH \
+ input.pdf 
+\end{lstlisting}
+
+To ensure better looking colors, prefer CYMK primary colors to RGB.
+The following lines are an excerpt from a Tikz picture of a Venn diagram:
+
+\begin{lstlisting}
+% CMYK
+\node[venn circle = magenta] (SW) at (0,0) {};
+\node[venn circle = cyan] (QA) at (60:0.17\textwidth) {};
+\node[venn circle = yellow] (QB) at (0:0.17\textwidth) {};
++% RBG
++% \node[venn circle = red] (SW) at (0,0) {};
++% \node[venn circle = blue] (QA) at (60:0.17\textwidth) {};
++% \node[venn circle = green] (QB) at (0:0.17\textwidth) {};
+\end{lstlisting}
+
+\section{Printing}
+I went to \href{https://reprograf-leipzig.de/}{REPRO Graf} in Leipzig, who printed and bound it for me quickly and for a good price.
+I didn't choose any fancy options, just standard A4 80g paper and hardcover binding.
+The only problem was that they printed it one-sided as that is their default, however I just kept it as a personal copy.
+Because two-sided margins differ between even and odd pages, you cannot submit a one-sided printing of a two-sided document, so communicate this very clearly in advance!
