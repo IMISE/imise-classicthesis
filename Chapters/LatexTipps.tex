@@ -1,0 +1,69 @@
+\chapter{\LaTeX{}- und Schreibtipps}
+Manche Institute verbieten einleitenden Text außerhalb von subsections wie diesen hier aber bei uns ist das ausdrücklich erwünscht.
+
+\section{Tabellen}
+
+\begin{tabular}{|l|r|}
+\hline
+Titel									&Zahl\\
+\hline
+Dies ist eine hässliche Beispieltabelle	ohne Titel, Label, Umbruch und Float-Eigenschaft &123\\
+Text									&55.222\\
+Noch mehr Text							&111111\\
+\hline
+\end{tabular}
+
+\begin{table}[ht]
+\begin{tabulary}{\textwidth}{LS}
+\toprule
+Titel									&Zahl\\
+\midrule
+Dies ist eine schöne Beispieltabelle mit Titel, Label, Umbruch, Float-Eigenschaft und korrekt eingerückten Zahlen	&123\\
+Text																												&55.222\\
+Noch mehr Text																										&111111\\
+\bottomrule
+\end{tabulary}
+\caption{Diese Tabelle kann sich frei bewegen aber bevorzugt hier oder oben auf der Seite. Sie benutzt keine vertikale Linien aber verschiedene horizontale Linien mithilfe des booktabs-Paketes.}
+\label{tab:exampletable}
+\end{table}
+
+
+\begin{landscape}
+
+\section{Striche}
+
+\begin{table}[h]
+\begin{tabulary}{\textheight}{LLLLL}
+\toprule
+Deutscher Name				&Englischer Name	&Einsatzzweck							&Beispiel													&Negativbeispiel\\
+\midrule
+Minus						&Minus				&Formeln								&$2-1=1$													&Karl$-$Liebknecht$-$Straße\\
+Viertelgeviertstrich		&Hyphen				&Bindestrich, Trennstrich				&Karl-Liebknecht-Straße										&5-7 Minuten\\
+Halbgeviertstrich			&n-dash				&Bis-Strich, Gedankenstrich (Deutsch)	&5--7 Minuten, plötzlich -- ein gewaltiges Beben! 			&Karl--Liebknecht--Straße\\% https://www.lernhelfer.de/schuelerlexikon/deutsch/artikel/gedankenstrich
+Geviertstrich				&m-dash				&Gedankenstrich (Englisch)				&Wow---What a long dash that is!							&Cook the egg for 4---6 minutes\\
+\bottomrule
+\end{tabulary}
+\caption{Verschiedene Striche und ihr Einsatzzweck. Diese Tabelle ist so breit, dass sie rotiert dargestellt wird. Im PDF-Viewer sollte die Seite gekippt sein, sodass man den Kopf nicht drehen muss.}
+\label{tab:dashes}
+\end{table}
+
+\end{landscape}
+
+
+\section{Abstände und Zeilenumbrüche}
+Das sind ganz normale Leerzeichen.
+Ein Zeilenumbruch wird als Leerzeichen interpretiert.
+Ich empfehle einen Satz pro Zeile, um kleinere Diffs im Versionskontrollsystem und bessere Übersichtlichkeit zu haben.
+Blocksatz ist Standard.
+
+
+
+Zwei oder mehr Zeilen werden als neuer Absatz interpretiert.\\
+Man kann auch zwei Backslashes als Zeilenumbruch nehmen z.B. bei Tabellen, aber nicht im Fließtext, denn dann fehlt die Einrückung.
+Mit der Tilde kann man ein Leerzeichen vor Umbruch schützen, z.B. vor einer Zitierung wie dieser~\citep{sniktec}.
+
+Es gibt auch halbe geschützte Leerzeichen, wie z.\,B. hier zwischen dem z und dem B, allerdings braucht man das nur sehr selten. Bei Zahlen und Maßeinheiten bietet es sich an, z.B. 50\,000\,kg statt 50 000 kg, aber dafür benutzt man lieber das Paket \href{http://mirrors.ctan.org/macros/latex/contrib/siunitx/siunitx.pdf}{siunitx}: \num{1000000000000000000000000}, \SI{50000}{\kg}.
+
+\section{Anführungszeichen}
+Am besten mit dem \verb+\enquote{}+-Befehl, dann werden automatisch die korrekten Anführungszeichen für die gewählte Sprache genommen: \enquote{Hier ein deutsches Zitat}.
+"Diese Anführungszeichen sind falsch", 'diese auch'.

@@ -136,6 +136,7 @@
   \def\aclabelfont#1{\acsfont{#1}}
 \PassOptionsToPackage{activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10,final}{microtype}%final-even in draft mode
 \usepackage[]{microtype}
+\usepackage{siunitx} % numbers with units
 % ****************************************************************************************************
 %\usepackage{pgfplots} % External TikZ/PGF support (thanks to Andreas Nautsch)
 %\usetikzlibrary{external}
@@ -145,11 +146,14 @@
 % ****************************************************************************************************
 % 4. Setup floats: tables, (sub)figures, and captions
 % ****************************************************************************************************
-\usepackage{tabularx} % better tables
-  \setlength{\extrarowheight}{3pt} % increase table row height
+\usepackage{booktabs}
+\usepackage{tabularx} % better tables that are smaller than the text width
+\usepackage{tabulary} % better tables that are wider than the text width
+\setlength{\extrarowheight}{3pt} % increase table row height
 \newcommand{\tableheadline}[1]{\multicolumn{1}{l}{\spacedlowsmallcaps{#1}}}
 \newcommand{\myfloatalign}{\centering} % to be used with each float for alignment
 \usepackage{subfig}
+\usepackage{pdflscape}%landscape, e.g. for large tables
 % ****************************************************************************************************
 
 
