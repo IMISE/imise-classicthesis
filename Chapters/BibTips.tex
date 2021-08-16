@@ -1,0 +1,29 @@
+\chapter{Literaturverzeichnis-Tipps}
+
+\section{BibLaTeX}
+BibLaTex\footnote{\url{https://ctan.org/pkg/biblatex}} löst das alte BibTeX ab, greift aber genauso auf .bib-Dateien zu, in denen die Literaturquellen definiert sind. In dieser Vorlage ist das alte bibtex-Backend eingestellt, in \texttt{classicthesis-config.tex} kann aber auch das neuere \enquote{biber}-Backend aktiviert werden, wodurch z.B. unicode-Zeichen möglich werden und Umlaute nicht mehr escaped werden müssen.
+Eine .bib-Datei besteht aus einer Liste von Einträgen, die z.B. auf \href{https://scholar.google.com}{Google Scholar} gefunden und per copy-paste in die \texttt{thesis.bib} eingefügt werden können.
+Diese müssen aber manuell geprüft und bei fehlenden oder inkorrekten Angaben wie Autoren oder dem Verlag korrigiert werden.
+
+\section{Zitieren}
+Diese Vorlage ist mit natbib kompatibel, sodass das neben \texttt{cite} auch die Kommandos \texttt{citet} (Zitieren im Text) und \texttt{citep} (Zitieren in Klammern) ablöst.
+Details stehen in der \href{http://mirrors.ctan.org/macros/latex/contrib/natbib/natbib.pdf}{natbib-Paketdokumentation}.
+
+\paragraph{Beispielzitierungen}
+\begin{itemize}
+\item \citet{sniktec} untersuchen verschiedene Verfahren für X.
+\item X ist \enquote{ein gutes Verfahren, um Y auf Basis von Z zu generieren}~\citep{sniktec}.\footnote{Wörtliches Zitat}
+\item In dieser Situation bietet sich auch X an, da es ein gutes Verfahren ist, um mit Z Y zu erstellen~\citep[vgl.]{sniktec}.\footnote{Sinngemäßes Zitat}
+\end{itemize}
+
+
+\subsection{Häufige Fehler}
+\begin{itemize}
+\item Zitierung in Fußnote
+\item Verwechseln von wörtlichem Zitat (Anführungszeichen), sinngemäßem Zitat (\enquote{vgl.}) und anderer Aussage (weder Anführungszeichen noch \enquote{vgl.})
+\item "Falsche Anführungszeichen" (immer \texttt{enquote} benutzen, dann kann dieser Fehler nicht passieren)
+\end{itemize}
+
+\section{Zitierstile}
+Bei einer Publikation ist der Zitierstil normalerweise vorgegeben, aber bei unseren Abschlussarbeiten gibt es keine Vorgabe.
+Ein numerischer Zitierstil ist sehr kompakt und bietet sich daher an, wenn ein Seitenlimit eingehalten werden muss, aber für eine Abschlussarbeit empfehlen wir einen Autor-Jahr-Zitierstil (in dieser Vorlage bereits eingestellt), da dieser mehr Informationen vermittelt.
