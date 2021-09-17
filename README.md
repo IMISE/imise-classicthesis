@@ -13,6 +13,10 @@ To fit the template with your own infos, please change `thesis.tex`. All the inc
 ## Setup
 Setup details such as needed packages are defined at `classicthesis-config.tex`.
 
+## Overleaf
+If you are not yet comfortable with a local LaTeX installation or want to write your thesis in the browser on different machines, you can import this template into the free Overleaf LaTeX online editor.
+Download as ZIP file on GitHub under Code -> Download ZIP and then go to New Project -> Upload Project on Overleaf.
+
 ## More help/information needed
 For further information please visit https://ctan.org/pkg/classicthesis or for documentation use [this][1] link. 
 
