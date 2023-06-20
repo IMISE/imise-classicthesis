@@ -1,7 +1,7 @@
 % ********************************************************************
 % classicthesis.sty
 %
-% Copyright (C) 2018 André Miede and Ivo Pletikosić
+% Copyright (C) 2022 AndrÃ© Miede and Ivo PletikosiÄ‡
 %
 % If you like the style then I would appreciate a postcard. My address
 % can be found in the file ClassicThesis.pdf. A collection of the
@@ -32,8 +32,8 @@
 %
 % ********************************************************************
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{classicthesis}[2018/06/03 v4.6 Typographic style for a classic-looking thesis]
-\providecommand{\classicthesis}{classicthesis v4.6}
+\ProvidesPackage{classicthesis}[2022/02/27 v4.7b Typographic style for a classic-looking thesis]
+\providecommand{\classicthesis}{classicthesis v4.7b}
 % Removed due to hint by David Carlisle and Ulrike Fischer
 % \PassOptionsToPackage{latest}{latexrelease} % replacement for fixltx2e,
 %   \RequirePackage{latexrelease} % emulate newer kernel version if older is detected
@@ -52,11 +52,10 @@
 \DeclareBoolOption{dottedtoc} % page numbers in ToC flushed right
 \DeclareBoolOption{listsseparated} % OBSOLETE; toggles the vertical space between lof/lot entries of different chapters
 
-\DeclareBoolOption[true]{parts} % OBSOLETE - automatic check; use part division
+\DeclareBoolOption[true]{parts} % OBSOLETE -- automatic check; use part division
 
-\DeclareBoolOption{nochapters} % OBSOLETE - automatic check; disable all chapter-specific commands
+\DeclareBoolOption{nochapters} % OBSOLETE -- automatic check; disable all chapter-specific commands
 \DeclareBoolOption{eulerchapternumbers} % use AMS Euler for chapter font (otherwise Palatino)
-\DeclareBoolOption{linedheaders} % chaper headers will have line above and beneath
 \DeclareBoolOption{floatperchapter} % numbering per chapter for all floats (i.e., Figure 1.1)
 \DeclareBoolOption{manychapters} % additional space in ToC after chapter number (if two digits are needed)
 
@@ -67,7 +66,7 @@
 \DeclareBoolOption[true]{beramono} % toggle a nice monospaced font (w/ bold) + pre-installed
 \DeclareBoolOption{minionpro} % OBSOLETE - removed; setup for minion pro font; use minion pro small caps as well
 \DeclareBoolOption[true]{palatino} % default is Palatino/Paladio/TeX Gyre Pagella font, use this switch to skip selection
-\DeclareStringOption[classicthesis]{style} % classicthesis or arsclassica
+\DeclareStringOption[classicthesis]{style} % classicthesis, arsclassica, linedheaders, plain
 \DeclareBoolOption{minionprospacing} % OBSOLETE; use minion pro's textssc for letter spacing
 \DeclareBoolOption{pdfspacing} % OBSOLETE; use pdftex for letterspacing (via microtype)
 
@@ -112,8 +111,7 @@
 \ifthenelse{\isundefined{\chapter}\OR\boolean{ct@nochapters}}
     {
         \PackageWarningNoLine{classicthesis}{Chapter sectioning command not present in this document class. %
-                Deactivating options floatperchapter, linedheaders, manychapters, listsseparated, eulerchapternumbers}%
-        \setboolean{ct@linedheaders}{false}
+                Deactivating options floatperchapter, manychapters, listsseparated, eulerchapternumbers}%
         \setboolean{ct@listsseparated}{false}
         \setboolean{ct@eulerchapternumbers}{false}
         \setboolean{ct@parts}{false}
@@ -131,6 +129,17 @@
 \ifthenelse{\equal{\ct@style}{arsclassica}}%
     {%\setboolean{ct@eulerchapternumbers}{true}% for arsclassica only eulerchapternumbers
     \setboolean{ct@arsclassica}{true}}{\setboolean{ct@arsclassica}{false}}
+
+% use linedheaders style
+\provideboolean{ct@linedheaders}
+\ifthenelse{\equal{\ct@style}{linedheaders}}%
+    {\setboolean{ct@linedheaders}{true}}{\setboolean{ct@linedheaders}{false}}
+
+% use plain vanilla style
+\provideboolean{ct@plain}
+\ifthenelse{\equal{\ct@style}{plain}}%
+    {\setboolean{ct@plain}{true}}{\setboolean{ct@plain}{false}}
+
 
 % ********************************************************************
 % PDF and XeLaTeX Stuff
@@ -161,13 +170,16 @@
      \RequirePackage{fontspec}
      \ifthenelse{\boolean{ct@palatino}}% default
        {
-         \setmainfont[Ligatures=TeX,Numbers=OldStyle]{TeX Gyre Pagella} % Palatino clone
+         \setmainfont[Ligatures=TeX,Numbers=OldStyle,
+           BoldFont = texgyrepagella-bold.otf,
+           ItalicFont = texgyrepagella-italic.otf,
+           BoldItalicFont = texgyrepagella-bolditalic.otf]{texgyrepagella-regular.otf} % Palatino clone
          \linespread{1.05} % a bit more for Palatino
          \RequirePackage{unicode-math}
-         \setmathfont{TeX Gyre Pagella Math}
+         \setmathfont{texgyrepagella-math.otf}
        }{\relax} % use class' default font
      \ifthenelse{\boolean{ct@beramono}}%
-       {\setmonofont[Scale=0.85]{DejaVu Sans Mono}} % like Bera; Scale=MatchLowercase
+       {\setmonofont[Scale=0.85]{DejaVuSansMono.ttf}} % like Bera; Scale=MatchLowercase
        {\setmonofont[Scale=1]{Latin Modern Mono}}
      % font for the chapter numbers will be defined in the old way below
      % because there is no OpenType Euler font; this is how it should be done:
@@ -327,6 +339,13 @@
       \DeclareRobustCommand{\spacedlowsmallcaps}[1]{{\addfontfeatures{LetterSpace=14.0}\ct@caps\MakeTextLowercase{#1}}}% WordSpace=1.8
       }{\relax}
 
+      \ifthenelse{\boolean{pdf}\OR\boolean{xetex}\OR\boolean{luatex}}% ever used? only dvi engines remain
+      {\relax}{%
+        \PackageWarningNoLine{classicthesis}{Plain LaTeX / DVI engines no longer supported. spacedlowsmallcaps and spacedallcaps will not work. See the Wiki for help.}%
+        \DeclareRobustCommand{\spacedlowsmallcaps}[1]{#1}%
+        \DeclareRobustCommand{\spacedallcaps}[1]{#1}%
+      }
+
 % ********************************************************************
 % headlines
 % ********************************************************************
@@ -375,16 +394,11 @@
     {\color{CTtitle}\spacedallcaps}[\bigskip\normalfont\normalsize\color{Black}\begin{quote}\ctparttext@print\end{quote}]
 }{\relax}
 % chapters
-\ifthenelse{\boolean{ct@linedheaders}}%
-{% lines above and below, number right
-    \titleformat{\chapter}[display]%
-    {\relax}{\raggedleft{\color{CTsemi}\chapterNumber\thechapter} \\ }{0pt}%
-    {\titlerule\vspace*{.9\baselineskip}\raggedright\spacedallcaps}[\normalsize\vspace*{.8\baselineskip}\titlerule]%
-}{% something like Bringhurst
-    \titleformat{\chapter}[display]%
-    {\relax}{\mbox{}\oldmarginpar{\vspace*{-3\baselineskip}\color{CTsemi}\chapterNumber\thechapter}}{0pt}%
-    {\raggedright\spacedallcaps}[\normalsize\vspace*{.8\baselineskip}\titlerule]%
-}
+% something like Bringhurst
+  \titleformat{\chapter}[display]%
+  {\relax}{\mbox{}\oldmarginpar{\vspace*{-3\baselineskip}\color{CTsemi}\chapterNumber\thechapter}}{0pt}%
+  {\raggedright\spacedallcaps}[\normalsize\vspace*{.8\baselineskip}\titlerule]%
+
 % sections \FloatBarrier
 \titleformat{\section}
     {\relax}{\textsc{\MakeTextLowercase{\thesection}}}{1em}{\spacedlowsmallcaps}
@@ -423,7 +437,7 @@
 
 % space for more than nine chapters
 \newlength{\newchnumberwidth}
-\settowidth{\newchnumberwidth}{.} % <--- tweak here if more space required
+\settowidth{\newchnumberwidth}{0} % <--- tweak here if more space required
 \ifthenelse{\boolean{ct@manychapters}}% <--- many chapters option
 {%
     \addtolength{\cftchapnumwidth}{\newchnumberwidth}%
@@ -461,7 +475,7 @@
     {%
         \renewcommand{\cftchappresnum}{\spacedlowsmallcaps}%
         \renewcommand{\cftchapaftersnumb}{\spacedlowsmallcaps}%
-        \renewcommand{\cftchapfont}{\normalfont}%
+        \renewcommand{\cftchapfont}{\spacedlowsmallcaps}%
         \renewcommand{\cftchappagefont}{\normalfont}%
         \ifthenelse{\boolean{ct@dottedtoc}}{\relax}%
           {%
@@ -643,21 +657,24 @@
 }{%
     \ifthenelse{\boolean{ct@listings}}{%
         \lstset{numberbychapter=false}}{\relax}%
-    \RequirePackage{remreset}%
-        \ifthenelse{\boolean{ct@nochapters}}%
-        {\relax}{%
-            \@removefromreset{table}{chapter}  % requires remreset package
-        }%
-        \renewcommand{\thetable}{\arabic{table}}%
-        \ifthenelse{\boolean{ct@nochapters}}%
-        {\relax}{%
-            \@removefromreset{figure}{chapter}  % requires remreset package
-        }%
-        \renewcommand{\thefigure}{\arabic{figure}}%
-        \ifthenelse{\boolean{ct@nochapters}}%
-        {\relax}{%
-            \@removefromreset{equation}{chapter}  % requires remreset package
-        }%
+    % remreset is now obsolete as its functionality has
+    % been incorporated into the LaTeX format.
+    % https://ctan.org/pkg/remreset
+    % \RequirePackage{remreset}%
+    %     \ifthenelse{\boolean{ct@nochapters}}%
+    %     {\relax}{%
+    %         \@removefromreset{table}{chapter}  % requires remreset package
+    %     }%
+    %     \renewcommand{\thetable}{\arabic{table}}%
+    %     \ifthenelse{\boolean{ct@nochapters}}%
+    %     {\relax}{%
+    %         \@removefromreset{figure}{chapter}  % requires remreset package
+    %     }%
+    %     \renewcommand{\thefigure}{\arabic{figure}}%
+    %     \ifthenelse{\boolean{ct@nochapters}}%
+    %     {\relax}{%
+    %         \@removefromreset{equation}{chapter}  % requires remreset package
+    %     }%
         \renewcommand{\theequation}{\arabic{equation}}%
 }
 
@@ -668,11 +685,25 @@
 \RequirePackage{classicthesis-arsclassica}
 \fi
 
+% ********************************************************************
+% linedheaders as separate style integration (experimental)
+% ********************************************************************
+\ifct@linedheaders
+\RequirePackage{classicthesis-linedheaders}
+\fi
+
+% ********************************************************************
+% plain vanilla as separate style integration (experimental)
+% ********************************************************************
+\ifct@plain
+\RequirePackage{classicthesis-plain}
+\fi
+
 
 % ********************************************************************
 % hyperreferences, pdf outline
 % ********************************************************************
-\PassOptionsToPackage{hyperfootnotes=false}{hyperref}
+% \PassOptionsToPackage{hyperfootnotes=false}{hyperref}
 \RequirePackage{hyperref}
     \pdfstringdefDisableCommands{\let\thepart=\relax} % no part numbers (i, ii, iii) in PDF outline   IVO
    %\pdfstringdefDisableCommands{\renewcommand{\thepart}{\Roman{part}}} %%%IVO bring back Part numbers in PDF outline

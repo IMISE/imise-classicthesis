@@ -33,7 +33,6 @@
   tocaligned=false, % the left column of the toc will be aligned (no indentation)
   dottedtoc=false,  % page numbers in ToC flushed right
   eulerchapternumbers=true, % use AMS Euler for chapter font (otherwise Palatino)
-  linedheaders=false,       % chaper headers will have line above and beneath
   floatperchapter=true,     % numbering per chapter for all floats (i.e., Figure 1.1)
   eulermath=false,  % use awesome Euler fonts for mathematical formulae (only with pdfLaTeX)
   beramono=true,    % toggle a nice monospaced font (w/ bold)
@@ -78,12 +77,10 @@
 \newcommand{\myTime}{Abgabedatum\xspace} 
 \newcommand{\myVersion}{\classicthesis}
 
-
-
 % ********************************************************************
 % Setup, finetuning, and useful commands
 % ********************************************************************
-\providecommand{\mLyX}{L\kern-.1667em\lower.25em\hbox{Y}\kelastrn-.125emX\@}
+\providecommand{\mLyX}{L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
 \newcommand{\ie}{i.\,e.}
 \newcommand{\Ie}{I.\,e.}
 \newcommand{\eg}{e.\,g.}
@@ -97,17 +94,18 @@
 % ********************************************************************
 % Packages with options that might require adjustments
 % ********************************************************************
-\PassOptionsToPackage{ngerman}{babel} % change this to your language(s), main language last
+\PassOptionsToPackage{american,ngerman}{babel} % change this to your language(s), main language last
 % Spanish languages need extra options in order to work with this template
 %\PassOptionsToPackage{spanish,es-lcroman}{babel}
 \usepackage{babel}
 
-\usepackage[thresholdtype=words]{csquotes}
+\usepackage{csquotes}
 \PassOptionsToPackage{%
   %backend=biber,bibencoding=utf8, %instead of bibtex
   backend=bibtex8,bibencoding=ascii,%
   language=auto,%
   style=authoryear,dashed=false%
+  %style=numeric-comp,%
   %style=authoryear-comp, % Author 1999, 2010
   %bibstyle=authoryear,dashed=false, % dashed: substitute rep. author with ---
   sorting=nyt, % name, year, title
@@ -134,7 +132,8 @@
   %\def\bflabel#1{{#1\hfill}}
   \def\bflabel#1{{\acsfont{#1}\hfill}}
   \def\aclabelfont#1{\acsfont{#1}}
-\PassOptionsToPackage{activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10,final}{microtype}%final-even in draft mode
+% those Microtype options unsupported by tectonic, you can uncomment if using pdflatex
+%\PassOptionsToPackage{activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10,final}{microtype}%final-even in draft mode
 \usepackage[]{microtype}
 \usepackage{siunitx} % numbers with units
 % ****************************************************************************************************
@@ -142,6 +141,7 @@
 %\usetikzlibrary{external}
 %\tikzexternalize[mode=list and make, prefix=ext-tikz/]
 % ****************************************************************************************************
+
 
 % ****************************************************************************************************
 % 4. Setup floats: tables, (sub)figures, and captions
@@ -191,7 +191,7 @@
 % ********************************************************************
 % Her Majesty herself
 % ********************************************************************
-\usepackage[dottedtoc]{classicthesis}
+\usepackage{classicthesis}
 
 
 % ********************************************************************
