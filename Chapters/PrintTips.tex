@@ -33,7 +33,8 @@ You can remove some of the clutter in vim via \verb+:%s/^.*\/usr\/share\:q/texmf
 
 \subsection{Overful Hboxes}
 Overful hboxes are elements going over your right margin, which should not happen.
-Overful and underful hboxes are included in your log but you can visualize overful hboxes using \verb+\setlength{\overfullrule}{20pt}+ (don't forget to take this out afterwards).
+Overful and underful hboxes are included in your log but you can visualize overful hboxes using \verb+\setlength{\overfullrule}{20pt}+.
+This template automatically does this in draft mode, don't forget to set \verb+drafting=false+ in \verb+classicthesis-config.tex+ for the final print.
 Sometimes an overful hbox is reported but not actually visible because only the invisible part of an element, such as a table, runs over the margin, in which case you can ignore it.
 
 \section{Color}

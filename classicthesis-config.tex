@@ -40,7 +40,6 @@
   style=classicthesis % classicthesis, arsclassica
 }{classicthesis}
 
-
 % ****************************************************************************************************
 % 2. Personal data and user ad-hoc commands (insert your own data here)
 % ****************************************************************************************************
@@ -132,9 +131,11 @@
   %\def\bflabel#1{{#1\hfill}}
   \def\bflabel#1{{\acsfont{#1}\hfill}}
   \def\aclabelfont#1{\acsfont{#1}}
-% those Microtype options unsupported by tectonic, you can uncomment if using pdflatex
-%\PassOptionsToPackage{activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10,final}{microtype}%final-even in draft mode
-\usepackage[]{microtype}
+% limited functionality but works with tectonic
+\PassOptionsToPackage{activate={true,nocompatibility},final,factor=1100,stretch=10,shrink=10}{microtype}%final-even in draft mode
+% use those instead with pdflatex
+%\PassOptionsToPackage{activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10}{microtype}%final-even in draft mode
+\usepackage{microtype}
 \usepackage{siunitx} % numbers with units
 % ****************************************************************************************************
 %\usepackage{pgfplots} % External TikZ/PGF support (thanks to Andreas Nautsch)

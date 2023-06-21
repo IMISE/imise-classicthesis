@@ -627,6 +627,7 @@
 \newcommand{\finalVersionString}{\relax}
 \providecommand{\myVersion}{$\!\!$} % w/o classicthesis-config.tex
 \ifthenelse{\boolean{ct@drafting}}{%
+        \setlength{\overfullrule}{20pt} % helps finding overfull hboxes, comment out when finished
 %    \RequirePackage{draftwatermark}%
 %       \SetWatermarkLightness{0.9}
 %           \SetWatermarkScale{.5}
@@ -634,7 +635,7 @@
         \PassOptionsToPackage{draft}{prelim2e}
         \RequirePackage{prelim2e}
         \renewcommand{\PrelimWords}{\relax}
-        \renewcommand{\PrelimText}{\footnotesize[\,\today\ at \thistime\ -- \myVersion\,]}
+        \renewcommand{\PrelimText}{\footnotesize[\,Entwurf \today\ at \thistime\ -- \myVersion\,]}
 }{\renewcommand{\finalVersionString}{\emph{Final Version} as of \today\ (\myVersion).}}
 
 % ********************************************************************

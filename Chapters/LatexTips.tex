@@ -1,6 +1,36 @@
 \chapter{\LaTeX{}- und Schreibtipps}
 Manche Institute verbieten einleitenden Text außerhalb von subsections wie direkt unter diesem Kapitel hier, aber bei uns ist das ausdrücklich erwünscht.
 
+\section{\LaTeX{} Installieren und Verwenden}
+\TeX{} ist über 40 Jahre alt und es gibt verschiedene \TeX{}-Engines und Installationen\footnotemark{}, z.B. \LaTeX{}, PDF\LaTeX{}, Xe\LaTeX{} und Lua\TeX{}.
+\footnotetext{\url{https://www.overleaf.com/learn/latex/Articles/What\%27s_in_a_Name\%3A_A_Guide_to_the_Many_Flavours_of_TeX}}
+
+Diese Vorlage basiert auf dem Paket ClassicThesis\footnote{\url{https://ctan.org/pkg/classicthesis}}, das für \LaTeX{}, PDF\LaTeX{} und LyX entwickelt wurde.
+Ich persönlich benutze PDF\LaTeX{} über \texttt{latexmk -pdf thesis.tex}, was automatisch PDF\LaTeX{} und Bib\TeX{} so oft wie nötig aufruft.
+Leider schreibt PDF\LaTeX{} extrem viel unnützen Text auf die Konsole, wodurch man Warnungen leicht übersieht.
+Daher habe ich die Vorlage so angepasst, dass sie auch mit \emph{tectonic}\footnote{\url{https://tectonic-typesetting.github.io}} funktioniert, was auf Xe\TeX{} basiert.
+tectonic hat einen wesentlich sparsameren und übersichtlicheren Output auf der Konsole, unterstützt aber nicht alle Funktionalitäten des Microtyping, wodurch mehr overful hboxes auftreten, daher benutze ich jetzt wieder PDF\LaTeX{}.
+
+Wenn Sie eine bessere Alternative kennen, können Sie gerne eine Issue\footnote{\url{https://github.com/IMISE/imise-classicthesis/issues}} öffnen oder ein Pull Request mit einer Änderung in diesem Abschnitt erstellen.
+
+\subsection{Linux}
+
+PDF\LaTeX{} und latexmk sind unter Linux in \TeX{} Live enthalten.
+Wenn Sie keine vollständige Installation der \texttt{texlive}-Gruppe möchten, bekommen Sie z.B. unter Arch Linux eine Minimalinstallation für diese Vorlage so:\\
+~\\
+{\raggedright\texttt{sudo pacman -Sy texlive-\{bin,basic,binextra,latex,\\%
+latexrecommended,pictures,latexextra,langgerman,bibtexextra,\\%
+fontsrecommended,mathscience,fontsextra\}}}
+
+\subsection{Windows und MacOS}
+
+Unter Windows wird MiK\TeX{} gern verwendet, was automatisch fehlende Pakete herunterlädt, bei MacOS habe ich keine Ahnung.
+
+Falls Sie nicht gerne auf der Kommandozeile sondern lieber in einer \LaTeX{}-IDE arbeiten, kann es sein, dass eine Installation schon integriert ist, dort müssen Sie dann nur eventuell PDF\LaTeX{} einstellen.
+
+\subsection{Web}
+Für die kollaborative Bearbeitung eines Artikels ohne Installation bieten sich Online-Editoren wie Overleaf\footnote{\url{https://www.overleaf.com/}} an, für eine Abschlussarbeit ist es meiner Meinung nach aber zu umständlich.
+
 \section{Links}
 
 \begin{itemize}
@@ -69,7 +99,7 @@ Zwei oder mehr Zeilen werden als neuer Absatz interpretiert.\\
 Man kann auch zwei Backslashes als Zeilenumbruch nehmen z.B. bei Tabellen, aber nicht im Fließtext, denn dann fehlt die Einrückung.
 Mit der Tilde kann man ein Leerzeichen vor Umbruch schützen, z.B. vor einer Zitierung wie dieser~\citep{sniktec}.
 
-Es gibt auch halbe geschützte Leerzeichen, wie z.\,B. hier zwischen dem z und dem B, allerdings braucht man das nur sehr selten. Bei Zahlen und Maßeinheiten bietet es sich an, z.B. 50\,000\,kg statt 50 000 kg, aber dafür benutzt man lieber das Paket \href{http://mirrors.ctan.org/macros/latex/contrib/siunitx/siunitx.pdf}{siunitx}: \num{1000000000000000}, \SI{50000}{\kg}.
+Es gibt auch halbe geschützte Leerzeichen, wie z.\,B. hier zwischen dem z und dem B, allerdings braucht man das nur sehr selten. Bei Zahlen und Maßeinheiten bietet es sich an, z.B. 50\,000\,kg statt 50 000 kg, aber dafür benutzt man lieber das Paket \href{http://mirrors.ctan.org/macros/latex/contrib/siunitx/siunitx.pdf}{siunitx}: \num{1000000000000000}, \SI{50000}{\kg}, \SI{50}{\%}.
 
 \section{Anführungszeichen}
 Am besten mit dem \verb+\enquote{}+-Befehl, dann werden automatisch die korrekten Anführungszeichen für die gewählte Sprache genommen: \enquote{Hier ein deutsches Zitat}.
