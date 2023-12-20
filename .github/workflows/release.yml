@@ -1,0 +1,35 @@
+name: Release
+on:
+  push:
+    tags: '[2-9][0-9]\.[0-9][0-9]'
+jobs:
+  create-release:
+    name: Create release
+    runs-on: ubuntu-latest
+    outputs:
+      upload_url: ${{ steps.create-release.outputs.upload_url }}
+    steps:
+      - name: Build Changelog
+        id: build-changelog
+        uses: mikepenz/release-changelog-builder-action@v4
+        with:
+          commitMode: true
+          configurationJson: |
+            {
+              "pr_template": "- #{{TITLE}}"
+            }
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: thesis.tex
+
+      - name: Create Release
+        id: create-release
+        uses: softprops/action-gh-release@v1
+        with:
+          body: ${{steps.build-changelog.outputs.changelog}}
+          files: thesis.pdf
