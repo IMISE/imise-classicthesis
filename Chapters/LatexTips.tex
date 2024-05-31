@@ -8,7 +8,7 @@ Manche Institute verbieten einleitenden Text außerhalb von subsections wie dire
 Diese Vorlage basiert auf dem Paket ClassicThesis\footnote{\url{https://ctan.org/pkg/classicthesis}}, das für \LaTeX{}, PDF\LaTeX{} und LyX entwickelt wurde.
 Ich persönlich benutze PDF\LaTeX{} über \texttt{latexmk -pdf thesis.tex}, was automatisch PDF\LaTeX{} und Bib\TeX{} so oft wie nötig aufruft.
 Leider schreibt PDF\LaTeX{} extrem viel unnützen Text auf die Konsole, wodurch man Warnungen leicht übersieht.
-Daher habe ich die Vorlage so angepasst, dass sie auch mit \emph{tectonic}\footnote{\url{https://tectonic-typesetting.github.io}} funktioniert, was auf Xe\TeX{} basiert.
+Daher habe ich die Vorlage so angepasst, dass sie auch mit \emph{Tectonic}\footnote{\url{https://tectonic-typesetting.github.io}} funktioniert, was auf Xe\TeX{} basiert.
 tectonic hat einen wesentlich sparsameren und übersichtlicheren Output auf der Konsole, unterstützt aber nicht alle Funktionalitäten des Microtyping, wodurch mehr overful hboxes auftreten, daher benutze ich jetzt wieder PDF\LaTeX{}.
 
 Wenn Sie eine bessere Alternative kennen, können Sie gerne eine Issue\footnote{\url{https://github.com/IMISE/imise-classicthesis/issues}} öffnen oder ein Pull Request mit einer Änderung in diesem Abschnitt erstellen.
@@ -21,6 +21,9 @@ Wenn Sie keine vollständige Installation der \texttt{texlive}-Gruppe möchten, 
 {\raggedright\texttt{sudo pacman -Sy texlive-\{bin,basic,binextra,latex,\\%
 latexrecommended,pictures,latexextra,langgerman,bibtexextra,\\%
 fontsrecommended,mathscience,fontsextra\}}}
+~\\
+~\\
+Alternativ mit Tectonic, welches sich benötigte Pakete automatisch herunterlädt: \texttt{sudo pacman -Sy tectonic}.
 
 \subsection{Windows und MacOS}
 
