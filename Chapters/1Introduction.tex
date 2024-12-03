@@ -4,21 +4,31 @@
 
 \section{Gegenstand}
 
-- Masterstudiengang Medizininformatik (Damals Informatik Schwerpunkt)
-- Fakultät der Mathematik und Informatik und Medizinische Fakultät der Universität Leipzig
-- von prof. dr. Alfred Winter
-- Wegen Corona über BBB gehalten (Sommersemester 2020 (genauer ab 4.6) bis einschließlich Wintersemester 21/22) 
-- Vorlesungsaufnahmen (Presentationen, Audio, Webcams, Chat) 
+Medizininformatik ist ein Masterstudiengang an der Fakultät der Mathematik und Informatik und der Medizinischen Fakultät der Universität Leipzig.
+Während der Corona-Pandemie\footnote{Sommersemester 2020 bis einschließlich zum Wintersemester 2021/2022.} wurden die Vorlesungen dieses Studiengangs (damals Schwerpunktes) von Prof. Dr. Alfred Winter online über Big Blue Button gehalten.
+Von diesen Vorlesungen liegen Aufnahmen der Präsentationen und Webcams, Audioaufnahmen und Chats vor.
+
+
+%- Masterstudiengang Medizininformatik (Damals Informatik Schwerpunkt)
+%- Fakultät der Mathematik und Informatik und Medizinische Fakultät der Universität Leipzig
+%- von prof. dr. Alfred Winter
+%- Wegen Corona über BBB gehalten (Sommersemester 2020 (genauer ab 4.6) bis einschließlich Wintersemester 21/22) 
+%- Vorlesungsaufnahmen (Presentationen, Audio, Webcams, Chat) 
+
 %- Sommersemester 2021 Modul: "Architektur von Informationssystemen im Gesundheitswesen" am \ac{imise} 
 %- Modul gehört zum Querschnittsbereich 1 Epidemiologie, medizinische Biometrie und medizinische Informatik 
-- Aufnahmen liegen zwar vor, Inhalt ist aber schlecht zugänglich -> Studenten brauchen eine Möglichkeit schnell und einfach auf dieses Wissen zuzugreifen
-- Deswegen sollen Aufnahmen transkibiert werden, und über ein großes generatives Sprachmodell den Studenten zur verfügung stehen 
+
+%- Aufnahmen liegen zwar vor, Inhalt ist aber schlecht zugänglich -> Studenten brauchen eine Möglichkeit schnell und einfach auf dieses Wissen zuzugreifen
+%- Deswegen sollen Aufnahmen transkibiert werden, und über ein großes %generatives Sprachmodell den Studenten zur verfügung stehen 
 
 \section{Problemstellung}
 
-- Aktuelle Möglichkeiten der Studierenden: Aufnahme -> nicht Verfügbar, Zeitaufwendig, Datenschutzprobleme; Buch -> Weniger Inhalt
+%- Aktuelle Möglichkeiten der Studierenden: Aufnahme -> nicht Verfügbar, Zeitaufwendig, Datenschutzprobleme; Buch -> Weniger Inhalt
+Deren Inhalt ist jedoch schlecht zugänglich.
 
-Aktuell haben Studierende der medizinischen Informatik wenige Möglichkeiten zur Beantwortung von spezifischen Fragen. Bücher und Mitschriften verfügen nicht über alle Inhalte und müssen lange nach Antworten durchsucht werden. Oft müssen dann andere Studierende oder Professoren zur Hilfe herangezogen werden, was auch nicht immer möglich ist.
+Aktuell haben Studierende der medizinischen Informatik wenige Möglichkeiten zur Beantwortung von spezifischen Fragen.
+Bücher und Mitschriften verfügen nicht über alle Inhalte und müssen lange nach Antworten durchsucht werden.
+Oft müssen dann andere Studierende oder Professoren zur Hilfe herangezogen werden, was auch nicht immer möglich ist.
 
 %\begin{itemize}
 %\item 
@@ -27,7 +37,7 @@ Problem: Antworten auf fachspezifische Fragen zum Studiengang Medizininformatik 
 %Europäische Datenschutz Grundverordnung, Bundesdatenschutzgesetz, Landesdatenschutzgesetz 
 %\item Problem P3: Aufnahmen stehen Studierenden nicht zur Verfügung
 %\end{itemize}
-
+\if false
 \paragraph{Vermeiden Sie Formulierungen wie \enquote{Es ist nicht bekannt, ob$\ldots$} oder \enquote{Es existiert kein$\ldots$}.}
 Solche Formulierungen kehren in der Regel einfach das bereits angedachte Lösungsmodell um und postulieren das Fehlen der angedachten Lösung einfach als Problem.
 Das ist ähnlich, als wenn es in der Werbung hieße \blockquote{Wenn Sie das Problem haben, dass Ihnen Aspirin fehlt, dann kaufen Sie doch Aspirin}.
@@ -50,7 +60,7 @@ Vermutlich liegt das Problem aber etwas tiefer.
 Es scheint doch wohl so zu sein, das bislang völlig unbrauchbare Software entwickelt wurde und man die Hoffnung hat, durch eine ganzheitliche Vorgehensweise bessere Ergebnisse erzielen zu können.
 Das Problem sollte also eher so formuliert werden:
 \blockquote{Problem: Wie aktuelle Publikationen zeigen [12-17], erfüllen die zur Zeit am Markt angebotenen  Softwareprodukte zur Steigerung der Motivation durch Unterhaltung in der Therapie nicht ihren Zweck.
-So wird zum Beispiel der Unterhaltungswert von 73\% der Anwender als gering eingestuft und eine Motivationssteigerung für die Therapie konnte in keiner Studie nachgewiesen werden.}
+So wird zum Beispiel der UntGeneratives Sprachmodellerhaltungswert von 73\% der Anwender als gering eingestuft und eine Motivationssteigerung für die Therapie konnte in keiner Studie nachgewiesen werden.}
 Dazu würde folgendes Ziel passen:
 \blockquote{Ziel ist eine ganzheitlichen Vorgehensweise zur Entwicklung von Software zur Steigerung der Motivation durch Unterhaltung in der Therapie, durch deren Anwendung der Unterhaltungswert für die Anwender und eine Motivationssteigerung für die Therapie erreicht werden kann.}
 Das hier geschilderte Problem ist jetzt ein Problem von Patient:innen.
@@ -61,8 +71,11 @@ Dazu würde dann folgendes Ziel passen:
 \blockquote{Ziel ist eine ganzheitlichen Vorgehensweise zur Entwicklung von Software zur Steigerung der Motivation durch Unterhaltung in der Therapie, die die Softwarentwickler:in ausgehend von den zu erreichenden Zielen systematisch bei der Auswahl geeigneter Spielelemente zur Steigerung von Motivation unterstützt.}
 In diesem Fall wird ein Problem vom Softwareentwickler:innen beschrieben und das angestrebte Ziel wird auch diese Entwickler:innen unterstützen.
 Hier müsste die Arbeit damit schließen, dass man zeigt, dass es bei dem Entwickeln der Software leichter wird, Elemente so einzusetzen, dass sie dem intendierten Zweck dienen.
+\fi
 
 \section{Motivation}
+
+Studenten brauchen eine Möglichkeit, auf dieses Wissen zuzugreifen. 
 
 \begin{itemize}
 \item Warum lohnt es sich, die genannten Probleme zu lösen?
@@ -71,14 +84,14 @@ Hier müsste die Arbeit damit schließen, dass man zeigt, dass es bei dem Entwic
 \item Wer wartet sehnlichst auf die Fertigstellung der Arbeit
 \end{itemize}
 
-Wenn ein gutes Transkript vorliegt können Studierende, mittels \acp(LLM), zu jeder Zeit schnell Antworten auf konkrete Fragen finden, was sonst sehr aufwändig wäre. Dadurch könnte Lernfortschritt beschleunigt werden.
+Wenn ein gutes Transkript vorliegt können Studierende, mittels \acp(llm), zu jeder Zeit schnell Antworten auf konkrete Fragen finden, was sonst sehr aufwändig wäre. Dadurch könnte Lernfortschritt beschleunigt werden.
 
 
 Ohne ausreichende Gegenstands-, Problem- und Motivationsbeschreibung kann eine Leser:in nicht verstehen, warum z.\,B. eine entwickelte Software sinnvoll ist bzw. zur Lösung welches Problems sie verwendet werden soll.
 Gerade für die Medizinische Informatik als eine problemorientierte Disziplin ergibt sich der Wert einer Lösung, z.\,B. einer Software, aber vor allem daraus, ob bzw. wie weit sie ein Problem löst.
 
 Für die Autor:in bedeutet daher eine unzureichende Gegenstands-, Problem- und Motivationsbeschreibung die Gefahr, dass sie oder er sich die zu lösende Problematik nicht ausreichend klar gemacht hat.
-Bei der Erstellung der Arbeit besteht dann die Gefahr, dass man möglicherweise methodisch aufregende Lösungen entwirft und realisiert, für die aber ein Problem gar nicht besteht oder die für die Lösung der tatsächlichen Probleme nicht geeignet sind.
+Bei der Erstellung der Arbeit besteht dann die Gefahr, dass man möglicherweise methodisch auGeneratives Sprachmodellfregende Lösungen entwirft und realisiert, für die aber ein Problem gar nicht besteht oder die für die Lösung der tatsächlichen Probleme nicht geeignet sind.
 Trotz einer möglicherweise brillanten Lösung wäre dann doch eine schlechte Bewertung der Lösung und damit der Arbeit zu erwarten.
 Außerdem sollte sich -- auch bei einer Abschlussarbeit -- die Arbeit auch lohnen, d.h. es sollte genügend Motivation geben, viel Zeit und Energie zu investieren.
 Aus diesem Grund sollten die Kapitel 1.1 bis 1.3 ausführlich sein.
@@ -105,6 +118,8 @@ Wer wartet sehnlichst auf die Fertigstellung der Arbeit?					&\enquote{Ich / Mei
 \end{itemize}
 
 \section{Aufgabenstellung}
+
+Deswegen sollen die Aufnahmen transkribiert werden, und über ein \ac{llm} zur Verfügung stehen.
 
 \begin{itemize}
 \item Wie sollen die o.\,g. Ziele erreicht werden?
