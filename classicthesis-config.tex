@@ -32,12 +32,13 @@
   drafting=true,    % print version information on the bottom of the pages
   tocaligned=false, % the left column of the toc will be aligned (no indentation)
   dottedtoc=false,  % page numbers in ToC flushed right
-  eulerchapternumbers=true, % use AMS Euler for chapter font (otherwise Palatino)
+  eulerchapternumbers=false, % use AMS Euler for chapter font (only works with pdfLaTeX, otherwise Palatino)
   floatperchapter=true,     % numbering per chapter for all floats (i.e., Figure 1.1)
   eulermath=false,  % use awesome Euler fonts for mathematical formulae (only with pdfLaTeX)
   beramono=true,    % toggle a nice monospaced font (w/ bold)
   palatino=true,    % deactivate standard font for loading another one, see the last section at the end of this file for suggestions
-  style=classicthesis % classicthesis, arsclassica
+  %linedheaders=true, % obsolete / available for backwards compatibility
+  style=classicthesis % Don't change this. The IMISE template only contains files for the classicthesis style. If you really want to use arsclassica, linedheaders or plain instead you need to import the appropriate .sty file from the original classicthesis template, but we don't guarantee that it works.
 }{classicthesis}
 
 % ****************************************************************************************************
@@ -101,7 +102,7 @@
 \usepackage{csquotes}
 \PassOptionsToPackage{%
   %backend=biber,bibencoding=utf8, %instead of bibtex
-  backend=bibtex8,bibencoding=ascii,%
+  backend=bibtex8,bibencoding=auto,% ascii
   language=auto,%
   style=authoryear,dashed=false%
   %style=numeric-comp,%
@@ -192,6 +193,7 @@
 % ********************************************************************
 % Her Majesty herself
 % ********************************************************************
+\PassOptionsToPackage{hyperfootnotes=false}{hyperref}
 \usepackage{classicthesis}
 
 
@@ -228,32 +230,36 @@
 % language you use, e.g., american, ngerman
 % (as chosen when loading babel/AtBeginDocument)
 % ********************************************************************
-\makeatletter
-\@ifpackageloaded{babel}%
-  {%
-    \addto\extrasamerican{%
-      \renewcommand*{\figureautorefname}{Figure}%
-      \renewcommand*{\tableautorefname}{Table}%
-      \renewcommand*{\partautorefname}{Part}%
-      \renewcommand*{\chapterautorefname}{Chapter}%
-      \renewcommand*{\sectionautorefname}{Section}%
-      \renewcommand*{\subsectionautorefname}{Section}%
-      \renewcommand*{\subsubsectionautorefname}{Section}%
-    }%
-    \addto\extrasngerman{%
-      \renewcommand*{\paragraphautorefname}{Absatz}%
-      \renewcommand*{\subparagraphautorefname}{Unterabsatz}%
-      \renewcommand*{\footnoteautorefname}{Fu\"snote}%
-      \renewcommand*{\FancyVerbLineautorefname}{Zeile}%
-      \renewcommand*{\theoremautorefname}{Theorem}%
-      \renewcommand*{\appendixautorefname}{Anhang}%
-      \renewcommand*{\equationautorefname}{Gleichung}%
-      \renewcommand*{\itemautorefname}{Punkt}%
-    }%
-      % Fix to getting autorefs for subfigures right (thanks to Belinda Vogt for changing the definition)
-      \providecommand{\subfigureautorefname}{\figureautorefname}%
-    }{\relax}
-\makeatother
+ \makeatletter
+ \@ifpackageloaded{babel}%
+   {%
+     \addto\extrasamerican{%
+       \renewcommand*{\figureautorefname}{Figure}%
+       \renewcommand*{\tableautorefname}{Table}%
+       \renewcommand*{\partautorefname}{Part}%
+       \renewcommand*{\chapterautorefname}{Chapter}%
+       \renewcommand*{\sectionautorefname}{Section}%
+       \renewcommand*{\subsectionautorefname}{Section}%
+       \renewcommand*{\subsubsectionautorefname}{Section}%
+     }%
+     \addto\extrasngerman{%
+       \renewcommand*{\paragraphautorefname}{Absatz}%
+       \renewcommand*{\subparagraphautorefname}{Unterabsatz}%
+       \renewcommand*{\footnoteautorefname}{Fu\"snote}%
+       \renewcommand*{\FancyVerbLineautorefname}{Zeile}%
+       \renewcommand*{\theoremautorefname}{Theorem}%
+       \renewcommand*{\appendixautorefname}{Anhang}%
+       \renewcommand*{\equationautorefname}{Gleichung}%
+       \renewcommand*{\itemautorefname}{Punkt}%
+     }%
+       % Fix to getting autorefs for subfigures right (thanks to Belinda Vogt for changing the definition)
+       \providecommand{\subfigureautorefname}{\figureautorefname}%
+     }{\relax}
+ \makeatother
+
+% (Better) alternative to \autoref is \cref via the cleveref package
+%\usepackage{cleveref}
+%\crefformat{part}{Part #2\MakeUppercase{#1}#3}
 
 
 % ********************************************************************

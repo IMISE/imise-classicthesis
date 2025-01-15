@@ -1,7 +1,7 @@
 % ********************************************************************
 % classicthesis.sty
 %
-% Copyright (C) 2022 AndrÃ© Miede and Ivo PletikosiÄ‡
+% Copyright (C) 2025 André Miede and Ivo Pletikosić
 %
 % If you like the style then I would appreciate a postcard. My address
 % can be found in the file ClassicThesis.pdf. A collection of the
@@ -32,8 +32,8 @@
 %
 % ********************************************************************
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{classicthesis}[2022/02/27 v4.7b Typographic style for a classic-looking thesis]
-\providecommand{\classicthesis}{classicthesis v4.7b}
+\ProvidesPackage{classicthesis}[2025/01/04 v4.8 Typographic style for a classic-looking thesis]
+\providecommand{\classicthesis}{classicthesis v4.8}
 % Removed due to hint by David Carlisle and Ulrike Fischer
 % \PassOptionsToPackage{latest}{latexrelease} % replacement for fixltx2e,
 %   \RequirePackage{latexrelease} % emulate newer kernel version if older is detected
@@ -59,16 +59,17 @@
 \DeclareBoolOption{floatperchapter} % numbering per chapter for all floats (i.e., Figure 1.1)
 \DeclareBoolOption{manychapters} % additional space in ToC after chapter number (if two digits are needed)
 
-\DeclareBoolOption{listings} % OBSOLETE - automatic check; load listings package and setup LoL
-\DeclareBoolOption{subfig} % OBSOLETE - automatic check; setup for preloaded @subfig package
+\DeclareBoolOption{listings} % OBSOLETE -- automatic check; load listings package and setup LoL
+\DeclareBoolOption{subfig} % OBSOLETE -- automatic check; setup for preloaded @subfig package
 
 \DeclareBoolOption{eulermath} % use awesome Euler fonts for mathematical formulae; only with pdflatex
 \DeclareBoolOption[true]{beramono} % toggle a nice monospaced font (w/ bold) + pre-installed
-\DeclareBoolOption{minionpro} % OBSOLETE - removed; setup for minion pro font; use minion pro small caps as well
+\DeclareBoolOption{minionpro} % OBSOLETE -- removed; setup for minion pro font; use minion pro small caps as well
 \DeclareBoolOption[true]{palatino} % default is Palatino/Paladio/TeX Gyre Pagella font, use this switch to skip selection
+\DeclareBoolOption{linedheaders} % OBSOLETE -- to be used with style=linedheaders now
 \DeclareStringOption[classicthesis]{style} % classicthesis, arsclassica, linedheaders, plain
 \DeclareBoolOption{minionprospacing} % OBSOLETE; use minion pro's textssc for letter spacing
-\DeclareBoolOption{pdfspacing} % OBSOLETE; use pdftex for letterspacing (via microtype)
+\DeclareBoolOption{pdfspacing} % OBSOLETE -- use pdftex for letterspacing (via microtype)
 
 \DeclareBoolOption{a4paper}
 \DeclareBoolOption{a5paper}
@@ -110,8 +111,7 @@
 % fine-tuning if we do not use chapters
 \ifthenelse{\isundefined{\chapter}\OR\boolean{ct@nochapters}}
     {
-        \PackageWarningNoLine{classicthesis}{Chapter sectioning command not present in this document class. %
-                Deactivating options floatperchapter, manychapters, listsseparated, eulerchapternumbers}%
+        \PackageWarningNoLine{classicthesis}{Chapter sectioning command not present in this document class. Deactivating options floatperchapter, manychapters, listsseparated, eulerchapternumbers}%
         \setboolean{ct@listsseparated}{false}
         \setboolean{ct@eulerchapternumbers}{false}
         \setboolean{ct@parts}{false}
@@ -124,16 +124,20 @@
 \ifthenelse{\NOT\isundefined{\part}\AND\boolean{ct@parts}}
     {\setboolean{ct@parts}{true}}{\setboolean{ct@parts}{false}}
 
+% use linedheaders style
+\provideboolean{ct@linedheadersstyle}
+\ifthenelse{\boolean{ct@linedheaders}}{%
+	\PackageWarningNoLine{classicthesis}{Option "linedheaders" is obsolete. Please use "style=linedheaders" instead.}%
+	\renewcommand*{\ct@style}{linedheaders}% experimental; overwrites other used style options
+	}{\relax}
+\ifthenelse{\equal{\ct@style}{linedheaders}}%
+	{\setboolean{ct@linedheadersstyle}{true}}{\setboolean{ct@linedheadersstyle}{false}}
+
 % use arsclassica style
 \provideboolean{ct@arsclassica}
 \ifthenelse{\equal{\ct@style}{arsclassica}}%
     {%\setboolean{ct@eulerchapternumbers}{true}% for arsclassica only eulerchapternumbers
     \setboolean{ct@arsclassica}{true}}{\setboolean{ct@arsclassica}{false}}
-
-% use linedheaders style
-\provideboolean{ct@linedheaders}
-\ifthenelse{\equal{\ct@style}{linedheaders}}%
-    {\setboolean{ct@linedheaders}{true}}{\setboolean{ct@linedheaders}{false}}
 
 % use plain vanilla style
 \provideboolean{ct@plain}
@@ -170,20 +174,33 @@
      \RequirePackage{fontspec}
      \ifthenelse{\boolean{ct@palatino}}% default
        {
-         \setmainfont[Ligatures=TeX,Numbers=OldStyle,
-           BoldFont = texgyrepagella-bold.otf,
-           ItalicFont = texgyrepagella-italic.otf,
-           BoldItalicFont = texgyrepagella-bolditalic.otf]{texgyrepagella-regular.otf} % Palatino clone
+         \setmainfont[Ligatures=TeX,Numbers=OldStyle]{texgyrepagella}[ % Palatino clone
+	        Extension= .otf,%
+	        UprightFont=*-regular,%
+	        ItalicFont= *-italic,%
+	        BoldFont= *-bold,%
+	        BoldItalicFont = *-bolditalic,%
+         ]%
          \linespread{1.05} % a bit more for Palatino
          \RequirePackage{unicode-math}
-         \setmathfont{texgyrepagella-math.otf}
+         \setmathfont{texgyrepagella-math}[Extension= .otf]%
        }{\relax} % use class' default font
-     \ifthenelse{\boolean{ct@beramono}}%
-       {\setmonofont[Scale=0.85]{DejaVuSansMono.ttf}} % like Bera; Scale=MatchLowercase
-       {\setmonofont[Scale=1]{Latin Modern Mono}}
-     % font for the chapter numbers will be defined in the old way below
-     % because there is no OpenType Euler font; this is how it should be done:
-     %\newfontface\chapterNumber[Scale=7,Color=000000]{TeX Gyre Pagella Bold}
+     \setmonofont[Scale=0.85]{DejaVuSansMono}[%
+     		Extension      = .ttf,%
+     	    BoldFont       = *-Bold,%
+            ItalicFont     = *-Oblique,%
+            BoldItalicFont = *-BoldOblique%
+     ]%
+     %\ifthenelse{\boolean{ct@beramono}}%
+     %  {\setmonofont[Scale=0.85]{DejaVuSansMono}} % like Bera; Scale=MatchLowercase
+     %  {\setmonofont[Scale=1]{lmmono10-regular}[Extension= .otf]} % https://www.ctan.org/tex-archive/fonts/lm/fonts/opentype/public/lm/
+     \ifthenelse{\boolean{ct@eulermath}}%
+     {\PassOptionsToPackage{math-style=upright}{unicode-math}%
+     	\RequirePackage{euler-math}} % Euler math fonts (OTF)
+     {\relax}
+     \ifthenelse{\boolean{ct@eulerchapternumbers}}% font for the chapter numbers
+     	{\newfontface\chapterNumber[Scale=7,Color=000000]{Euler-Math}[Extension= .otf]}%
+     	{\newfontface\chapterNumber[Scale=7,Color=000000]{texgyrepagella-regular}[Extension= .otf]}%
    }
    { % use Type 1 fonts with pdflatex
      \ifthenelse{\boolean{ct@palatino}}% default
@@ -207,16 +224,16 @@
          {\PassOptionsToPackage{euler-digits}{eulervm}%
          \RequirePackage{eulervm}} % Euler math fonts
          {\relax}
-   }
 
        \ifthenelse{\boolean{ct@eulerchapternumbers}}% font for the chapter numbers
-          {\DeclareFixedFont{\chapterNumber}{U}{eur}{b}{n}{70}}%
-          {\DeclareFixedFont{\chapterNumber}{T1}{pplj}{m}{n}{70}}%
-         %{\newfont{\chapterNumber}{eurb10 scaled 7000}}%
-         %{\newfont{\chapterNumber}{pplr9d scaled 7000}}
-         % Euler eurb10 / Palatino OSF pplr9d / Palatino SC pplrc9d
-         % Latin Modern cork-lmr10 / Minion MinionPro-Regular-osf-t1
-         % (MinionPro-SemiboldCapt-osf-t1 MinionPro-SemiboldDisp-osf-t1)
+		{\DeclareFixedFont{\chapterNumber}{U}{eur}{b}{n}{70}}%
+		{\DeclareFixedFont{\chapterNumber}{T1}{pplj}{m}{n}{70}}%
+		%{\newfont{\chapterNumber}{eurb10 scaled 7000}}%
+		%{\newfont{\chapterNumber}{pplr9d scaled 7000}}
+		% Euler eurb10 / Palatino OSF pplr9d / Palatino SC pplrc9d
+		% Latin Modern cork-lmr10 / Minion MinionPro-Regular-osf-t1
+		% (MinionPro-SemiboldCapt-osf-t1 MinionPro-SemiboldDisp-osf-t1)
+   }
 
 
 
@@ -330,6 +347,7 @@
       \microtypesetup{protrusion=true,expansion=true}
       \DeclareRobustCommand{\spacedallcaps}[1]{\textls[160]{\ct@caps\MakeTextUppercase{#1}}}
       \DeclareRobustCommand{\spacedlowsmallcaps}[1]{\textls[80]{\ct@caps\MakeTextLowercase{#1}}}
+	  \DeclareRobustCommand{\spacedlowsmallcapsstyle}{\ct@caps\lsstyle\lowercase}	
       }{\relax}
 
     \ifthenelse{\boolean{xetex}}{ % use fontspec features; \OR\boolean{luatex} does not work well
@@ -337,6 +355,7 @@
       \microtypesetup{expansion=false}
       \DeclareRobustCommand{\spacedallcaps}[1]{{\addfontfeature{LetterSpace=18.0}\ct@caps\MakeTextUppercase{#1}}}% WordSpace=1.8
       \DeclareRobustCommand{\spacedlowsmallcaps}[1]{{\addfontfeatures{LetterSpace=14.0}\ct@caps\MakeTextLowercase{#1}}}% WordSpace=1.8
+	  \DeclareRobustCommand{\spacedlowsmallcapsstyle}{\addfontfeatures{LetterSpace=14.0}\ct@caps\lowercase}
       }{\relax}
 
       \ifthenelse{\boolean{pdf}\OR\boolean{xetex}\OR\boolean{luatex}}% ever used? only dvi engines remain
@@ -344,6 +363,7 @@
         \PackageWarningNoLine{classicthesis}{Plain LaTeX / DVI engines no longer supported. spacedlowsmallcaps and spacedallcaps will not work. See the Wiki for help.}%
         \DeclareRobustCommand{\spacedlowsmallcaps}[1]{#1}%
         \DeclareRobustCommand{\spacedallcaps}[1]{#1}%
+		 \DeclareRobustCommand{\spacedlowsmallcapsstyle}{\relax}%
       }
 
 % ********************************************************************
@@ -454,10 +474,10 @@
 {%
     \renewcommand{\thepart}{\roman{part}}%
     \renewcommand{\cftpartpresnum}{\scshape}%  \MakeTextLowercase
-    \renewcommand{\cftpartaftersnum}{}%
+    \renewcommand{\cftpartaftersnum}{\spacedlowsmallcaps}%
     \renewcommand{\cftpartaftersnumb}{\spacedlowsmallcaps}%
     \setlength{\cftpartnumwidth}{\cftchapnumwidth}
-    \renewcommand{\cftpartfont}{\color{CTtitle}\normalfont}%
+    \renewcommand{\cftpartfont}{\color{CTtitle}\spacedlowsmallcapsstyle}% \normalfont
     \cftpagenumbersoff{part}
     \renewcommand{\cftpartpagefont}{\normalfont}%
     \ifthenelse{\boolean{ct@dottedtoc}}{\relax}%
@@ -635,7 +655,7 @@
         \PassOptionsToPackage{draft}{prelim2e}
         \RequirePackage{prelim2e}
         \renewcommand{\PrelimWords}{\relax}
-        \renewcommand{\PrelimText}{\footnotesize[\,Entwurf \today\ at \thistime\ -- \myVersion\,]}
+        \renewcommand{\PrelimText}{\footnotesize[\,\today\ at \thistime\ -- \myVersion\,]}
 }{\renewcommand{\finalVersionString}{\emph{Final Version} as of \today\ (\myVersion).}}
 
 % ********************************************************************
@@ -689,7 +709,7 @@
 % ********************************************************************
 % linedheaders as separate style integration (experimental)
 % ********************************************************************
-\ifct@linedheaders
+\ifct@linedheadersstyle
 \RequirePackage{classicthesis-linedheaders}
 \fi
 
