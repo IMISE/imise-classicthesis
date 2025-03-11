@@ -23,6 +23,7 @@
   \usepackage{fontenc}
 
 
+
 % ****************************************************************************************************
 % 1. Configure classicthesis for your needs here, e.g., remove "drafting" below
 % in order to deactivate the time-stamp on the pages
@@ -41,19 +42,18 @@
   style=classicthesis % Don't change this. The IMISE template only contains files for the classicthesis style. If you really want to use arsclassica, linedheaders or plain instead you need to import the appropriate .sty file from the original classicthesis template, but we don't guarantee that it works.
 }{classicthesis}
 
+
 % ****************************************************************************************************
 % 2. Personal data and user ad-hoc commands (insert your own data here)
 % ****************************************************************************************************
-\newcommand{\myTitle}{Mein Titel mein Titel mein Titel mein Titel mein Titel\xspace}
-\newcommand{\mySubtitle}{Mein Untertitel\xspace}
-\newcommand{\myDegree}{DEGREE\xspace}
-\newcommand{\myName}{Mein Name\xspace}
-\newcommand{\mybirthday}{dd.mm.yyyy}
-\newcommand{\mybirthtown}{Musterstadt}
-\newcommand{\mybirthcountry}{Musterland}
-\newcommand{\myProf}{Prof. Dr. Alfred Winter\xspace}
-\newcommand{\myOtherProf}{Prof. Name2\xspace}
-\newcommand{\mySupervisor}{(Dr.) Betreuer Name\xspace}
+\newcommand{\myTitle}{Transkription von Vorlesungsaufnahmen für Question Answering im Bereich Medizinische Informatik mittels großen generativen Sprachmodellen\xspace}
+\newcommand{\mySubtitle}{Besondere Lernleistung Simon Boldt\xspace}
+\newcommand{\myName}{Simon Boldt\xspace}
+\newcommand{\mybirthday}{07.06.2008}
+\newcommand{\mybirthtown}{Leipzig}
+\newcommand{\mybirthcountry}{Deutschland}
+\newcommand{\myProf}{Herr Robert Karl\xspace}
+\newcommand{\mySupervisor}{Dr. Konrad Höffner\xspace}
 
 %\newcommand{\myFaculty}{Institut für Mathematik und Informatik\xspace}
 %\newcommand{\mySubject}{Informatik}
@@ -68,19 +68,22 @@
 
 \newcommand{\myFaculty}{Medizinische Fakultät\xspace}
 \newcommand{\myDepartment}{Institut für Medizinische Informatik, Statistik und Epidemiologie\xspace}
+\newcommand{\mySchool}{Wilhelm-Ostwald-Schule, Gymnasium der Stadt Leipzig\xspace}
 \newcommand{\myUni}{Universität Leipzig\xspace}
-\newcommand{\mySubject}{Informatik B. Sc.\xspace}
+\newcommand{\mySubject}{Besondere Lernleistung Referenzfach Informatik\xspace}
 %\newcommand{\mySubject}{Informatik M. Sc. mit Studienrichtung Medizinische Informatik\xspace}% alter Master
 %\newcommand{\mySubject}{Medizininformatik M. Sc.\xspace}% neuer Master
 
 \newcommand{\myLocation}{Leipzig\xspace}
-\newcommand{\myTime}{Abgabedatum\xspace} 
+\newcommand{\myTime}{xy. Monat 2025\xspace}
 \newcommand{\myVersion}{\classicthesis}
+
+
 
 % ********************************************************************
 % Setup, finetuning, and useful commands
 % ********************************************************************
-\providecommand{\mLyX}{L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+\providecommand{\mLyX}{L\kern-.1667em\lower.25em\hbox{Y}\kelastrn-.125emX\@}
 \newcommand{\ie}{i.\,e.}
 \newcommand{\Ie}{I.\,e.}
 \newcommand{\eg}{e.\,g.}
@@ -91,6 +94,10 @@
 % ****************************************************************************************************
 % 3. Loading some handy packages
 % ****************************************************************************************************
+
+%\usepackage{amsthm}
+\newtheorem{definition}{Definition}
+
 % ********************************************************************
 % Packages with options that might require adjustments
 % ********************************************************************
@@ -138,12 +145,13 @@
 %\PassOptionsToPackage{activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10}{microtype}%final-even in draft mode
 \usepackage{microtype}
 \usepackage{siunitx} % numbers with units
+\usepackage{rotating}
+
 % ****************************************************************************************************
 %\usepackage{pgfplots} % External TikZ/PGF support (thanks to Andreas Nautsch)
 %\usetikzlibrary{external}
 %\tikzexternalize[mode=list and make, prefix=ext-tikz/]
 % ****************************************************************************************************
-
 
 % ****************************************************************************************************
 % 4. Setup floats: tables, (sub)figures, and captions
@@ -193,9 +201,9 @@
 % ********************************************************************
 % Her Majesty herself
 % ********************************************************************
-\PassOptionsToPackage{hyperfootnotes=false}{hyperref}
-\usepackage{classicthesis}
 
+\PassOptionsToPackage{hyperfootnotes=false}{hyperref}
+\usepackage[dottedtoc]{classicthesis}
 
 % ********************************************************************
 % Fine-tune hyperreferences (hyperref should be called last)
@@ -211,7 +219,7 @@
   plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
   hypertexnames=true, pdfhighlight=/O,%nesting=true,%frenchlinks,%
   urlcolor=CTurl, linkcolor=CTlink, citecolor=CTcitation, %pagecolor=RoyalBlue,%
-  %urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
+  %urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%PRINTING
   pdftitle={\myTitle},%
   pdfauthor={\textcopyright\ \myName, \myUni, \myFaculty},%
   pdfsubject={},%
@@ -305,7 +313,69 @@
 % ****************************************************************************************************
 
 % ****** Custom
-\usepackage{todonotes}
-\usepackage{cleveref}
-\newtheorem{definition}{Definition}
+\usepackage{todonotes} % \todo{}
+\usepackage{cleveref} % \cref{}
+% Vorgaben von Schule
+\linespread{1.5} % 1.5-Zeilenabstand
 
+\iffalse
+\usepackage[1000]{aurl} % URIs mit Präfix und hyperref link
+\usepackage{longtable} % Tabellen über mehrere Seiten
+% plots
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+% AURL Definitions
+\daurl{wiki-commons}{http://commons.wikimedia.org/wiki/}
+% et al. statt u.a. bei Bibtex
+\DefineBibliographyStrings{german}{andothers={et\addabbrvspace al\adddot}}
+% Umlaute in Codeblöcken
+\lstset{
+  literate={ö}{{\"o}}1
+           {ä}{{\"a}}1
+           {ü}{{\"u}}1
+}
+
+
+
+% rotation-Befehl
+\newcommand{\rot}{\rotatebox{90}}
+
+% checkmarks
+
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+% SPARQL-Syntax highlighting
+\lstdefinelanguage{SPARQl}{
+  language=SQL,
+  morekeywords={PREFIX, a, CONSTRUCT},
+  sensitive=true,
+  % DISABLE FOR PRINTING
+  morecomment=[l][\color{OliveGreen}]{\#},
+  morestring=[b][\color{RedOrange}]\",
+  % ENABLE FOR PRINTING
+  %morecomment=[l][\color{Black}]{\#},
+  %morestring=[b][\color{Black}]\",
+  %keywordstyle=\color{Black}
+}
+
+% line breaking symbols in lstlisting
+%\lstset{prebreak=\raisebox{0ex}[0ex][0ex]
+%        {\ensuremath{\hookleftarrow}}}
+\lstset{postbreak=\raisebox{0ex}[0ex][0ex]
+        {\ensuremath{\hookrightarrow\space}}}
+\lstset{breaklines=true, breakatwhitespace=true}
+\fi
+% TODO: Überschriften Fett
+
+% Seitenränder nach Schulvorgabe
+% für doppelseitigen Druck entfernen
+\usepackage[
+  paper=a4paper,
+  left=40mm,
+  right=30mm
+]{geometry}
+
+% Konfiguration in thesis.tex nach Titlepage

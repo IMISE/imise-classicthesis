@@ -9,7 +9,7 @@
     \WarningFilter{titlesec}{Non standard sectioning command detected}
 \documentclass[ ngerman, twoside,openright,titlepage,numbers=noenddot,%1headlines,
                 headinclude,footinclude,cleardoublepage=empty,abstract=on,
-                BCOR=5mm,paper=a4,fontsize=11pt
+                BCOR=5mm,paper=a4,fontsize=12pt% 12pt ist Schulvorgabe
                 ]{scrreprt}
 
 %********************************************************************
@@ -48,13 +48,14 @@
 %\cleardoublepage\include{FrontBackmatter/Foreword}
 \cleardoublepage\include{FrontBackmatter/Summary}
 \cleardoublepage\include{FrontBackmatter/Acknowledgments}
+\pagenumbering{arabic} % für Schulvorgabe
 \cleardoublepage\include{FrontBackmatter/Contents}
 %********************************************************************
 % Mainmatter
 %*******************************************************
 \cleardoublepage
 \pagestyle{scrheadings}
-\pagenumbering{arabic}
+%\pagenumbering{arabic}
 %\setcounter{page}{90}
 % use \cleardoublepage here to avoid problems with pdfbookmark
 \cleardoublepage
@@ -70,15 +71,15 @@
 % ********************************************************************
 % Backmatter
 %*******************************************************
+%\cleardoublepage\include{FrontBackmatter/Summary}
 \cleardoublepage\include{FrontBackmatter/Bibliography}
 \appendix
 %\renewcommand{\thechapter}{\alph{chapter}}
 \cleardoublepage
 \part*{Appendix}
-\include{Chapters/BibTips}
-\include{Chapters/LatexTips}
-\include{Chapters/GitTips}
-\include{Chapters/PrintTips}
+%\include{Chapters/LatexTips}
+%\include{Chapters/GitTips}
+%\include{Chapters/PrintTips}
 %********************************************************************
 % Other Stuff in the Back
 %*******************************************************
