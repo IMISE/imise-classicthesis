@@ -17,6 +17,13 @@ Setup details such as needed packages are defined at `classicthesis-config.tex`.
 If you are not yet comfortable with a local LaTeX installation or want to write your thesis in the browser on different machines, you can import this template into the free Overleaf LaTeX online editor.
 Download as ZIP file on GitHub under Code -> Download ZIP and then go to New Project -> Upload Project on Overleaf.
 
+**Update**: Because Overleaf has restricted its free version to an almost unusable state for a thesis, I strongly recommend a local installation now.
+
+## Besondere Lernleistung am Wilhelm-Ostwald-Gymnasium (for German school children writing their "BeLL" thesis at IMISE)
+
+Bitte die Git Branch "bell" auschecken, dort sind die Vorgaben des Gymnasiums so weit sinnvoll möglich umgesetzt.
+Alle Abweichungen von Vorgaben können gerne auf Konrad Höffners Vorgaben geschoben werden :-)
+
 ## More help/information needed
 For further information please visit https://ctan.org/pkg/classicthesis or for documentation use [this][1] link. 
 
