@@ -51,9 +51,10 @@
 \newcommand{\mybirthday}{dd.mm.yyyy}
 \newcommand{\mybirthtown}{Musterstadt}
 \newcommand{\mybirthcountry}{Musterland}
-\newcommand{\myProf}{Prof. Dr. Alfred Winter\xspace}
-\newcommand{\myOtherProf}{Prof. Name2\xspace}
-\newcommand{\mySupervisor}{(Dr.) Betreuer Name\xspace}
+\newcommand{\myProf}{(Dr.) Vorname Nachname Lehrerbetreuer\xspace}
+%\newcommand{\myProf}{Prof. Dr. Alfred Winter\xspace}
+%\newcommand{\myOtherProf}{Prof. Name2\xspace}
+\newcommand{\mySupervisor}{Dr. Konrad Höffner\xspace}
 
 %\newcommand{\myFaculty}{Institut für Mathematik und Informatik\xspace}
 %\newcommand{\mySubject}{Informatik}
@@ -68,14 +69,17 @@
 
 \newcommand{\myFaculty}{Medizinische Fakultät\xspace}
 \newcommand{\myDepartment}{Institut für Medizinische Informatik, Statistik und Epidemiologie\xspace}
+\newcommand{\mySchool}{Wilhelm-Ostwald-Schule, Gymnasium der Stadt Leipzig\xspace}
 \newcommand{\myUni}{Universität Leipzig\xspace}
-\newcommand{\mySubject}{Informatik B. Sc.\xspace}
+\newcommand{\mySubject}{Besondere Lernleistung Referenzfach Informatik\xspace}
 %\newcommand{\mySubject}{Informatik M. Sc. mit Studienrichtung Medizinische Informatik\xspace}% alter Master
 %\newcommand{\mySubject}{Medizininformatik M. Sc.\xspace}% neuer Master
 
 \newcommand{\myLocation}{Leipzig\xspace}
-\newcommand{\myTime}{Abgabedatum\xspace} 
+\newcommand{\myTime}{xy. Monat 2025\xspace}
 \newcommand{\myVersion}{\classicthesis}
+
+
 
 % ********************************************************************
 % Setup, finetuning, and useful commands
@@ -91,6 +95,10 @@
 % ****************************************************************************************************
 % 3. Loading some handy packages
 % ****************************************************************************************************
+
+%\usepackage{amsthm}
+\newtheorem{definition}{Definition}
+
 % ********************************************************************
 % Packages with options that might require adjustments
 % ********************************************************************
@@ -138,12 +146,13 @@
 %\PassOptionsToPackage{activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10}{microtype}%final-even in draft mode
 \usepackage{microtype}
 \usepackage{siunitx} % numbers with units
+\usepackage{rotating}
+
 % ****************************************************************************************************
 %\usepackage{pgfplots} % External TikZ/PGF support (thanks to Andreas Nautsch)
 %\usetikzlibrary{external}
 %\tikzexternalize[mode=list and make, prefix=ext-tikz/]
 % ****************************************************************************************************
-
 
 % ****************************************************************************************************
 % 4. Setup floats: tables, (sub)figures, and captions
@@ -305,7 +314,69 @@
 % ****************************************************************************************************
 
 % ****** Custom
-\usepackage{todonotes}
-\usepackage{cleveref}
-\newtheorem{definition}{Definition}
+\usepackage{todonotes} % \todo{}
+\usepackage{cleveref} % \cref{}
+% Vorgaben von Schule
+\linespread{1.5} % 1.5-Zeilenabstand
 
+\iffalse
+\usepackage[1000]{aurl} % URIs mit Präfix und hyperref link
+\usepackage{longtable} % Tabellen über mehrere Seiten
+% plots
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+% AURL Definitions
+\daurl{wiki-commons}{http://commons.wikimedia.org/wiki/}
+% et al. statt u.a. bei Bibtex
+\DefineBibliographyStrings{german}{andothers={et\addabbrvspace al\adddot}}
+% Umlaute in Codeblöcken
+\lstset{
+  literate={ö}{{\"o}}1
+           {ä}{{\"a}}1
+           {ü}{{\"u}}1
+}
+
+
+
+% rotation-Befehl
+\newcommand{\rot}{\rotatebox{90}}
+
+% checkmarks
+
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+% SPARQL-Syntax highlighting
+\lstdefinelanguage{SPARQl}{
+  language=SQL,
+  morekeywords={PREFIX, a, CONSTRUCT},
+  sensitive=true,
+  % DISABLE FOR PRINTING
+  morecomment=[l][\color{OliveGreen}]{\#},
+  morestring=[b][\color{RedOrange}]\",
+  % ENABLE FOR PRINTING
+  %morecomment=[l][\color{Black}]{\#},
+  %morestring=[b][\color{Black}]\",
+  %keywordstyle=\color{Black}
+}
+
+% line breaking symbols in lstlisting
+%\lstset{prebreak=\raisebox{0ex}[0ex][0ex]
+%        {\ensuremath{\hookleftarrow}}}
+\lstset{postbreak=\raisebox{0ex}[0ex][0ex]
+        {\ensuremath{\hookrightarrow\space}}}
+\lstset{breaklines=true, breakatwhitespace=true}
+\fi
+% TODO: Überschriften Fett
+
+% Seitenränder nach Schulvorgabe
+% für doppelseitigen Druck entfernen
+\usepackage[
+  paper=a4paper,
+  left=40mm,
+  right=30mm
+]{geometry}
+
+% Konfiguration in thesis.tex nach Titlepage
