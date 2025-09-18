@@ -107,3 +107,18 @@ Es gibt auch halbe geschützte Leerzeichen, wie z.\,B. hier zwischen dem z und d
 \section{Anführungszeichen}
 Am besten mit dem \verb+\enquote{}+-Befehl, dann werden automatisch die korrekten Anführungszeichen für die gewählte Sprache genommen: \enquote{Hier ein deutsches Zitat}.
 "Diese Anführungszeichen sind falsch", 'diese auch'.
+
+\section{Abkürzungen}
+Abkürzungen sollen beim ersten mal ausgeschrieben werden, siehe Quellcode dieses Abschnittes.
+
+Beispiele: \ac{bell}, \ac{csv}, \ac{cpu}, \ac{uri}, \ac{url}, \ac{imise} \ac{json}, \ac{llama} \ac{llm}, \ac{snik}, \ac{rdf}, \ac{www}, \ac{http}, \ac{sparql}, \ac{owl}, \ac{w3c}, \ac{xsd}.
+
+Bei allen folgenden Nennungen reicht die Kurzform mit einem Link in das Abkürzungsverzeichnis.
+
+Beispiele: \ac{bell}, \ac{csv}, \ac{cpu}, \ac{uri}, \ac{url}, \ac{imise} \ac{json}, \ac{llama} \ac{llm}, \ac{snik}, \ac{rdf}, \ac{www}, \ac{http}, \ac{sparql}, \ac{owl}, \ac{w3c}, \ac{xsd}.
+
+All dies wird durch das Paket \enquote{acronym} mit dem Kommando \verb+\ac{key}+ automatisiert, z.B. \verb+\ac{cpu}+.
+Pluralformen mit \verb+\acp{key}+: \acp{cpu}, \acp{uri}.
+
+Abkürzungen müssen in der Datei \texttt{FrontbackMatter/Acronym.tex} definiert werden, die Syntax ist dort mit Beispielen erklärt.
+Spezialfälle wie untypische Pluralformen erklärt die Paketdokumentation unter \url{http://mirrors.ctan.org/macros/latex/contrib/acronym/acronym.pdf}.
