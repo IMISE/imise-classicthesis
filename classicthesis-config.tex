@@ -308,5 +308,13 @@
 % ****** Custom
 \usepackage{todonotes}
 \usepackage{cleveref}
+% workaround for conflict between cleverref and acronym packages, tested with acronym v1.50
+\makeatletter
+\AtBeginDocument
+ {
+   \def\ltx@label#1{\cref@label{#1}}%add braces
+   \def\label@in@display@noarg#1{\cref@old@label@in@display{#1}}%remove braces
+ }
+\makeatother
 \newtheorem{definition}{Definition}
 
