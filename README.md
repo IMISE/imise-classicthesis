@@ -4,8 +4,19 @@ The package is perfectly suited for PhD theses as well but there may be some ada
 Using this template is optional and suggested for those who value aesthetics and typography and don't mind a little complexity.
 If you want to use a less complicated template, use https://github.com/IMISE/imise-latex.
 
+## Install LaTeX
+If you are new to LaTeX, on Linux I recommend installing and using [Tectonic](https://tectonic-typesetting.github.io/).
+A simple `tectonic thesis.tex` will download all the necessary packages, perform the necessary compilation steps and give you a simple log output.
+
+You can also use the traditional texlive.
+If you are a minimalist and don't want to a complete installation, the following metapackages should be enough:
+
+     texlive-langgerman texlive-bibtexextra texlive-binextra texlive-fontsextra texlive-latexextra texlive-mathscience
+
 ## Language
-Can be used for both English and German. German is set by default. To switch to English, rename the sections and change the babel language.
+Can be used for both English and German.
+German is set by default.
+To switch to English, rename the sections and change the babel language.
 
 ## Usage
 To fit the template with your own infos, please change `thesis.tex`. All the included files can be turned on or off as you want it to have.

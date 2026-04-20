@@ -31,11 +31,12 @@ Of course there should never be any errors when compiling a LaTeX document but w
 The log can have a thousand lines or more because pdflatex is very verbose but some nasty surprises can be hidden there so I recommend you to go through it at least once, even though you cannot fix all of them.
 You can remove some of the clutter in vim via \verb+:%s/^.*\/usr\/share\:q/texmf-dist\/.*$\n//+ (adapt to your LaTeX installation path).
 
-\subsection{Overful Hboxes}
-Overful hboxes are elements going over your right margin, which should not happen.
-Overful and underful hboxes are included in your log but you can visualize overful hboxes using \verb+\setlength{\overfullrule}{20pt}+.
+\subsection{Overfull Hboxes}
+Overfull hboxes are elements going over your right margin, which should not happen.
+Overfull and underful hboxes are included in your log but you can visualize overfull hboxes using \verb+\setlength{\overfullrule}{20pt}+.
 This template automatically does this in draft mode, don't forget to set \verb+drafting=false+ in \verb+classicthesis-config.tex+ for the final print.
-Sometimes an overful hbox is reported but not actually visible because only the invisible part of an element, such as a table, runs over the margin, in which case you can ignore it.
+Sometimes an overfull hbox is reported but not actually visible because only the invisible part of an element, such as a table, runs over the margin, in which case you can ignore it.
+I show you how to fix them in the video \url{https://youtu.be/EeS8p9TGrHw}.
 
 \section{Color}
 Colored pages are about ten times more expensive than grayscale, so you need to find them, reduce the number of them as much as possible and then tell the printing studio how many there are for calculating the price.
