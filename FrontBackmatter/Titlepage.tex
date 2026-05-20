@@ -9,7 +9,7 @@
 
 \begin{titlepage}
 	% if you want the titlepage to be centered, uncomment and fine-tune the line below (KOMA classes environment)
-	\begin{addmargin}[-1cm]{-3cm}
+	\begin{addmargin}[-0cm]{-2cm}
     \begin{center}
         \large
 		
@@ -36,17 +36,31 @@
 
         %im Fachgebiet \mySubject vorgelegt von\\\vfill
 
-		vorgelegt von\\\vfill
+	%vorgelegt von\\\vfill
+        \centering
+        \begin{tabularx}{\textwidth}{lr}
+        Leipzig, den \myTime    &vorgelegt von\\
+                                &\myName\\
+                                &Studiengang \mySubject{}\\
+        \end{tabularx}
 
-        \textbf{\myName}\\
-		Studiengang \mySubject{}\vfill%Anpassen in classicthesis-config.tex
+        %\textbf{\myName}\\
+	%Studiengang \mySubject{}\vfill%Anpassen in classicthesis-config.tex
 
         %geboren am {\mybirthday} in {\mybirthtown}, {\mybirthcountry} \\\vfill
 
-        Leipzig, den \myTime\vfill
+        %Leipzig, den \myTime\vfill
 
+        \vspace{2em}
 
-
+        Betreuender Hochschullehrer | Betreuer: \mySupervisor\\
+        % Zugehörigkeit: (nur nötig, falls beide Betreuer unterschiedliche Zugehörigkeit haben)
+        Betreuer | Zweitgutachter: \myProf (bei Bachelorarbeit gibt es nur einen)\\
+        % Achtung: Es gibt hier zwei Fälle:
+        % Option 1: Der offizielle Betreuer ist Professor:in. In diesem Fall ist der betreuende Hochschullehrer als erstes anzugeben.
+        % Wenn hauptsächlich ein wissenschaftlicher Mitarbeiter die Betreuung übernimmt, kann dieser darunter angegeben werden.
+        % Option 2: Der offizielle Betreuer ist promoviert, hat aber keine Professur. In diesem Fall ist in der ersten Zeile der Betreuer anzugeben, in der zweiten Zeile der Zweitgutachter, der in diesem Fall eine Professur haben muss.
+        Zugehörigkeit: \myFaculty, \myDepartment % falls abweichend von eigenem Department hier ersetzen
 
 
         %\mySubtitle \\ \medskip
