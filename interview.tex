@@ -1,0 +1,174 @@
+% tested with pdflatex, tectonic emits warnings
+% problem: form values don't appear in print
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\setlength{\parindent}{0pt}
+% form fields use sans serif font, adapt document font to match
+\usepackage[scaled]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\hypersetup{pdfborder={0 0 0},colorlinks=false}
+\def\DefaultOptionsofText{
+bordercolor={0 0 0},
+borderwidth=0.0pt,
+backgroundcolor={1 1 1},
+}
+%\def\DefaultOptionsofCheckBox{bordercolor={0 0 0}, borderwidth=0.4pt, backgroundcolor={1 1 1}}
+\def\DefaultOptionsofCheckBox{bordercolor={0 0 0}}
+\usepackage{microtype}
+\usepackage[ngerman]{babel}
+\usepackage[margin=2.5cm]{geometry}
+\renewcommand\thesubsubsection{\arabic{subsubsection}}
+
+\begin{document}
+
+\section*{Informationsschreiben und Einwilligungserklärung zur Masterarbeit}
+
+\begin{center}
+\TextField[name=titel,width=17cm,charsize=17pt,multiline=true,default={Titel Ihrer Arbeit}]{}
+\end{center}
+
+\section*{Projektbeteiligte und Kontaktpersonen}
+
+\subsubsection*{Durchführende Person}
+\TextField[name=name,width=17cm,default={Vorname Name}]{}\\
+Studiengang: \TextField[name=studiengang,width=6cm,default={Medizininformatik M. Sc.}]{} \\
+\TextField[name=email,width=17cm,default={...@studserv.uni-leipzig.de}]{} \\
+
+\subsubsection*{Betreuung}
+\TextField[name=betreuer,width=17cm,default={Titel Vorname Nachname Betreuer:in}]{}\\
+\TextField[name=inst,width=17cm,default={Institut für Medizinische Informatik, Statistik und Epidemiologie}]{}
+\TextField[name=uni,width=17cm,default={Universität Leipzig}]{}
+\TextField[name=emailbet,width=17cm,default={Email-Adresse Betreuer:in}]{} \\
+
+\vspace{2em}
+
+Liebe/r Teilnehmer/in,
+
+dieses Schreiben dient dazu, Sie über den Zweck, den Ablauf und den Umgang mit Ihren Daten, die durch die Interviews erhoben werden, zu informieren.
+Bitte lesen Sie den nachfolgenden Text aufmerksam durch.
+Sollten Sie mit der Teilnahme an einem Interview einverstanden sein, unterschreiben Sie gerne die Einverständniserklärung und schicken Sie diese per Mail an die oben genannten Kontaktdaten der durchführenden Person.
+Falls Sie noch weitere Fragen haben, kontaktieren Sie mich gerne jederzeit.
+
+\section{Informationen über die Masterarbeit}
+\TextField[name=info,width=17cm,multiline=true,
+default={1-2 Sätze zur Zielsetzung Ihrer Arbeit und der Interviews.
+Die Datenerhebung erfolgt im Rahmen eines halbstrukturierten, leitfadengestützten Interviews,
+das nach Zustimmung der Teilnehmenden digital aufgezeichnet wird.
+Die Audioaufnahme wird anschließend transkribiert.
+Die Datenspeicherung erfolgt digital auf gesicherten, passwortgeschützten Datenträgern am Institut für Medizinische Informatik, Statistik und Epidemiologie.
+}]{}
+
+\section{Datenschutz}
+
+\subsection*{Allgemeine Informationen}
+
+\subsubsection{Verantwortliche Stelle gemäß Art. 4 Abs. 7 DSGVO}
+
+Universität Leipzig\\
+Medizinische Fakultät\\
+Liebigstr. 27 A\\
+04103 Leipzig \\
+Telefon: +49 341 97-15930\\
+E-Mail: \href{mailto:dekanat@medizin.uni-leipzig.de}{dekanat@medizin.uni-leipzig.de}
+
+\subsubsection*{Kontaktdaten des Datenschutzbeauftragten}
+
+Ronald Speer\\
+Datenschutzbeauftragter\\
+Medizinische Fakultät der Universität Leipzig\\
+Philipp-Rosenthal-Str. 27\\
+04103 Leipzig\\
+Telefon: +49 341 97-16105\\
+E-Mail: \href{mailto:dsbmf@medizin.uni-leipzig.de}{dsbmf@medizin.uni-leipzig.de}
+
+\subsubsection{Sie haben folgende Rechte hinsichtlich Ihrer personenbezogenen Daten}
+
+\begin{itemize}
+\item Recht auf Auskunft,
+\item Recht auf Berichtigung,
+\item Recht auf Löschung,
+\item Recht auf Einschränkung der Verarbeitung,
+\item Recht auf Widerspruch gegen die Verarbeitung,
+\item Recht auf Datenübertragbarkeit
+\end{itemize}
+
+sofern diese Rechte nicht durch Gesetze im Rahmen der Datenverarbeitung zu wissenschaftlichen Zwecken eingeschränkt sind.
+Sie haben zudem das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die Verarbeitung Ihrer personenbezogenen Daten in unserem Unternehmen zu beschweren.
+
+\subsubsection{Bei Fragen zur Datenverarbeitung können Sie sich an die durchführende Person oder die betreuenden Personen wenden.}
+
+\subsubsection{Die Projektdurchführenden werden alle angemessenen Schritte unternehmen, um den Schutz Ihrer Daten gemäß Datenschutz-Grundverordnung (DS-GVO) und anderen Gesetzen zu gewährleisten.}
+Die Daten sind gegen unbefugten Zugriff gesichert.
+Die personenbezogenen Daten werden anonymisiert, sobald dies nach dem Forschungszweck möglich ist, es sei denn berechtigte Interessen der betroffenen Person stehen dem entgegen.
+Bis dahin werden die Merkmale gesondert gespeichert, mit denen Einzelangaben über persönliche oder sachliche Verhältnisse einer bestimmten oder bestimmbaren Person oder Institution zugeordnet werden können.
+Sie werden mit den Einzelangaben nur zusammengeführt, soweit der Forschungszweck dies erfordert.
+
+\subsubsection{Die Verarbeitung ihrer personenbezogenen Daten erfolgt nur, sofern Sie ausdrücklich in die Erhebung und Verarbeitung Ihrer Daten eingewilligt haben.}
+
+\subsubsection{Sie haben das Recht, Ihre Einwilligung in die Verarbeitung Ihrer personenbezogenen Daten jederzeit zu widerrufen.}
+Durch den Widerruf der Einwilligung wird die Rechtmäßigkeit, der aufgrund der Einwilligung bis zum Widerruf erfolgten Verarbeitung nicht berührt.
+
+\subsection*{Projektspezifische Informationen}
+\setcounter{subsubsection}{0}
+
+Im Folgenden informiere ich Sie über die Erhebung personenbezogener Daten im Zusammenhang mit der oben genannten Masterarbeit.
+
+\subsubsection{Beschreibung und Umfang der Datenverarbeitung}
+
+Zur Erfüllung der Zwecke der Masterarbeit werden personenbezogene Daten der Teilnehmer:innen erhoben.
+Diese beinhalten insbesondere:
+
+\begin{itemize}
+\item \TextField[name=iden,width=15cm,default={Identifikationsdaten (z.B. Name, Kontaktdaten)}]{}
+\item \TextField[name=beruf,width=15cm,default={Berufliche Angaben (z.B. Funktion, Tätigkeitsbereich)}]{}
+\item \TextField[name=audio,width=15cm,default={Audioaufnahmen}]{}
+\item \TextField[name=inhalt,width=15cm,default={Inhaltliche Daten aus dem Interview, insbesondere …}]{}
+\end{itemize}
+
+Der Zugriff auf diese Daten ist ausschließlich auf die durchführenden und betreuenden Personen beschränkt.
+Personenbezogene sowie eindeutig zuordenbare institutionsbezogene Angaben werden nach der Erhebung pseudonymisiert.
+Die Zuordnung zwischen den verwendeten Pseudonymen und den tatsächlichen Personen erfolgt ausschließlich über eine getrennt aufbewahrte Identifikationsliste.
+Während dieses Zeitraums besteht daher eine theoretische Re-Identifikationsmöglichkeit.
+Für Auswertung, Zitation und wissenschaftliche Darstellung werden ausschließlich pseudonymisierte bzw. nach Löschung der Identifikationsliste anonymisierte Aussagen verwendet.
+
+\subsubsection{Rechtsgrundlage für die Datenverarbeitung}
+
+Rechtsgrundlage ist die Einwilligungserklärung gem. Art. 6 Abs. 1 lit a) und Art. 9 Abs. 2 lit. a) DS-GVO.
+
+\subsubsection{ Zweck der Datenverarbeitung}
+
+Die Verarbeitung der erhobenen Daten erfolgt zur Bearbeitung der Masterarbeit.
+Darüber hinaus können Inhalte und Aussagen für wissenschaftliche Veröffentlichungen genutzt werden, sofern diese keine Rückschlüsse auf einzelne Personen oder Institutionen zulassen.
+
+
+\subsubsection{Dauer der Speicherung}
+
+Die Audioaufnahmen werden nach der Transkription gelöscht.
+Die pseudonymisierten Transkripte werden entsprechend den Empfehlungen der Deutschen Forschungsgemeinschaft (DFG) zur Sicherung guter wissenschaftlicher Praxis für einen Zeitraum von 15 Jahren gespeichert.
+ Die Identifikationsliste wird bis zu diesem Zeitpunkt getrennt aufbewahrt.
+Nach Ablauf der Speicherfrist werden die Identifikationsliste sowie sämtliche personenbezogenen Daten vollständig und unwiderruflich gelöscht.
+Die verbleibenden Transkripte sind ab diesem Zeitpunkt anonymisiert und eine Zuordnung zu einzelnen Personen ist nicht mehr möglich.
+
+\subsubsection{Widerspruchs- und Beseitigungsmöglichkeit}
+
+Die Teilnahme ist freiwillig.
+Sie können die Einwilligung jederzeit ohne Angabe von Gründen widerrufen, ohne dass Ihnen daraus Nachteile entstehen.
+Der Widerruf kann per E-Mail an die im Schreiben oben genannte durchführende Person gerichtet werden.
+Im Fall des Widerrufs werden Ihre Daten nicht weiterverarbeitet und unverzüglich gelöscht.
+Es wird darauf hingewiesen, dass anonymisierte Daten und Daten, die in wissenschaftliche Auswertungen eingeflossen sind, nicht mehr gelöscht werden können.
+
+\section*{Einwilligungserklärung}
+Ich, \TextField[name=teilnehmer,width=7cm, default={Vorname Name}]{}, erkläre mich bereit,
+im Rahmen der oben beschriebenen Masterarbeit an einem Interview teilzunehmen.
+Ich wurde über Ziel, Ablauf und Umgang mit meinen Daten informiert.
+Ich bin einverstanden, dass das Interview digital aufgezeichnet, transkribiert und für wissenschaftliche Auswertungen verwendet wird.
+Weiterhin wurde ich über meine Rechte, die Freiwilligkeit der Teilnahme, die Löschfristen sowie die Möglichkeit des Widerrufs informiert.
+
+\CheckBox[name=kontakt]{} Ich willige ein, dass meine Kontaktdaten zum Zweck möglicher Rückfragen oder einer erneuten Kontaktaufnahme im Rahmen der Studie gespeichert werden. (Bitte ankreuzen, wenn einverstanden)
+
+\vspace{1cm}
+\TextField[name=ortdatum,width=5cm]{Ort, Datum} \hspace{1cm} \TextField[name=unterschrift,width=6cm]{Unterschrift}
+
+\end{document}
