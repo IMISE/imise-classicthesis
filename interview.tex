@@ -120,12 +120,21 @@ Im Folgenden informiere ich Sie über die Erhebung personenbezogener Daten im Zu
 Zur Erfüllung der Zwecke der Masterarbeit werden personenbezogene Daten der Teilnehmer:innen erhoben.
 Diese beinhalten insbesondere:
 
+\TextField[name=daten,width=17cm,multiline=true,default={
+• Identifikationsdaten (z.B. Name, Kontaktdaten)\textCR
+• Berufliche Angaben (z.B. Funktion, Tätigkeitsbereich)\textCR
+• Audioaufnahmen\textCR
+• Inhaltliche Daten aus dem Interview, insbesondere …\textCR
+}]{}
+
+\iffalse
 \begin{itemize}
 \item \TextField[name=iden,width=15cm,default={Identifikationsdaten (z.B. Name, Kontaktdaten)}]{}
 \item \TextField[name=beruf,width=15cm,default={Berufliche Angaben (z.B. Funktion, Tätigkeitsbereich)}]{}
 \item \TextField[name=audio,width=15cm,default={Audioaufnahmen}]{}
 \item \TextField[name=inhalt,width=15cm,default={Inhaltliche Daten aus dem Interview, insbesondere …}]{}
 \end{itemize}
+\fi
 
 Der Zugriff auf diese Daten ist ausschließlich auf die durchführenden und betreuenden Personen beschränkt.
 Personenbezogene sowie eindeutig zuordenbare institutionsbezogene Angaben werden nach der Erhebung pseudonymisiert.
