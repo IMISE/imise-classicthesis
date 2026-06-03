@@ -197,6 +197,9 @@
 \PassOptionsToPackage{hyperfootnotes=false}{hyperref}
 \usepackage{classicthesis}
 
+% use colored text for template parts to remind students to remove them
+\definecolor{temp}{cmyk}{1, 0, 0, 0.5}
+\newenvironment{temp}{\color{temp}}
 
 % ********************************************************************
 % Fine-tune hyperreferences (hyperref should be called last)
