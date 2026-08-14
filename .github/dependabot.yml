@@ -9,3 +9,7 @@ updates:
     assignees: ["KonradHoeffner"]
     schedule:
       interval: "daily"
+      time: "07:30"
+      timezone: "Europe/Berlin"
+    cooldown:
+      default-days: 0
