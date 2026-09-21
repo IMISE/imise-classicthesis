@@ -27,12 +27,21 @@
 
         \vfill \bigskip
 
-        {\Huge BACHELOR-/MASTERARBEIT} \vfill\medskip
+        \ifbachelor
+        {\Huge BACHELORARBEIT} \vfill\medskip
+        \else
+        {\Huge MASTERARBEIT} \vfill\medskip
+        \fi
 
         zur Erlangung des akademischen Grades \\\vfill
-
-        {\LARGE Bachelor/Master of Science}\\
-        (B./M. Sc.)\\\vfill
+        
+        \ifbachelor
+        {\LARGE Bachelor of Science}\\
+        (B. Sc.)\\\vfill
+        \else
+        {\LARGE Master of Science}\\
+        (M. Sc.)\\\vfill
+        \fi
 
         %im Fachgebiet \mySubject vorgelegt von\\\vfill
 
@@ -53,9 +62,12 @@
 
         \vspace{2em}
 
-        Betreuender Hochschullehrer | Betreuer: \mySupervisor\\
+        \temp{Betreuender Hochschullehrer ODER Betreuer}: \mySupervisor\\
         % Zugehörigkeit: (nur nötig, falls beide Betreuer unterschiedliche Zugehörigkeit haben)
-        Betreuer | Zweitgutachter: \myProf (bei Bachelorarbeit gibt es nur einen)\\
+        \unless\ifbachelor
+        \temp{Betreuer ODER Zweitgutachter}: \myProf\\
+        \fi
+        % UNZUTREFFENDES SOWIE DAS WORT "ODER" STREICHEN
         % Achtung: Es gibt hier zwei Fälle:
         % Option 1: Der offizielle Betreuer ist Professor:in. In diesem Fall ist der betreuende Hochschullehrer als erstes anzugeben.
         % Wenn hauptsächlich ein wissenschaftlicher Mitarbeiter die Betreuung übernimmt, kann dieser darunter angegeben werden.

@@ -54,6 +54,8 @@
 \newcommand{\myProf}{Prof. Dr. Alfred Winter\xspace}
 \newcommand{\myOtherProf}{Prof. Name2\xspace}
 \newcommand{\mySupervisor}{(Dr.) Betreuer Name\xspace}
+\newif\ifbachelor
+\bachelorfalse % Für eine Bachelorarbeit stattdessen: \bachelortrue
 
 %\newcommand{\myFaculty}{Institut für Mathematik und Informatik\xspace}
 %\newcommand{\mySubject}{Informatik}
@@ -69,10 +71,12 @@
 \newcommand{\myFaculty}{Medizinische Fakultät\xspace}
 \newcommand{\myDepartment}{Institut für Medizinische Informatik, Statistik und Epidemiologie\xspace}
 \newcommand{\myUni}{Universität Leipzig\xspace}
+\ifbachelor
 \newcommand{\mySubject}{Informatik B. Sc.\xspace}
+\else
 %\newcommand{\mySubject}{Informatik M. Sc. mit Studienrichtung Medizinische Informatik\xspace}% alter Master
-%\newcommand{\mySubject}{Medizininformatik M. Sc.\xspace}% neuer Master
-
+\newcommand{\mySubject}{Medizininformatik M. Sc.\xspace}% neuer Master
+\fi
 \newcommand{\myLocation}{Leipzig\xspace}
 \newcommand{\myTime}{Abgabedatum\xspace} 
 \newcommand{\myVersion}{\classicthesis}
